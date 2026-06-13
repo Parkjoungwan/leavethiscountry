@@ -86,7 +86,9 @@ async function initMap(fromKey, purpose) {
     .on("click", function(event, d) {
       const key = NUMERIC_TO_KEY[d.id];
       if (!key) return;
-      window.location.href = `articles/${currentFrom}-to-${key}-${currentPurpose}-2026.html`;
+      const url = getArticleUrl(currentFrom, key, currentPurpose);
+      if (!url) return;
+      window.location.href = url;
     });
 
   // Zoom
