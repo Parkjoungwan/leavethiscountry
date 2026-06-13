@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — LeaveThisCountry</title>
+  <meta name="description" content="Contact LeaveThisCountry for corrections, suggestions, or partnership inquiries.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { overflow: auto; }
+    .page-wrap { max-width: 640px; margin: 0 auto; padding: 60px 24px; }
+    .page-nav { display: flex; align-items: center; gap: 16px; margin-bottom: 48px; }
+    .page-nav a { color: var(--accent); text-decoration: none; font-size: 14px; }
+    .page-logo { font-size: 20px; font-weight: 700; color: var(--text); text-decoration: none; }
+    .page-logo span { color: var(--accent); }
+    h1 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
+    p { color: #94a3b8; line-height: 1.75; margin-bottom: 16px; }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 14px;
+      background: #111a2a;
+      border: 1px solid #1e2d3a;
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+    textarea { resize: vertical; min-height: 120px; }
+    select option { background: #111a2a; }
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: opacity 0.15s;
+    }
+    .submit-btn:hover { opacity: 0.85; }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <nav class="page-nav">
+    <a href="index.html" class="page-logo">Leave<span>This</span>Country</a>
+    <a href="index.html">← Back to map</a>
+  </nav>
+
+  <h1>Contact Us</h1>
+  <p>Found incorrect data? Have a suggestion? We'd love to hear from you.</p>
+
+  <!-- Replace action URL with your Formspree endpoint: https://formspree.io/f/YOUR_ID -->
+  <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+    <div class="form-group">
+      <label for="name">Your name</label>
+      <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+    </div>
+    <div class="form-group">
+      <label for="subject">Subject</label>
+      <select id="subject" name="subject">
+        <option value="data-correction">Data correction</option>
+        <option value="suggestion">Feature suggestion</option>
+        <option value="partnership">Partnership / affiliate</option>
+        <option value="press">Press inquiry</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Please describe your inquiry..." required></textarea>
+    </div>
+    <input type="hidden" name="_subject" value="LeaveThisCountry Contact">
+    <button type="submit" class="submit-btn">Send message</button>
+  </form>
+
+  <p style="margin-top:32px; font-size:13px; color:#475569;">We typically respond within 2 business days.</p>
+</div>
+</body>
+</html>
