@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://leavethiscountry.com/sitemap.xml
+Sitemap: https://leavethiscountry.whddhs6645-636.workers.dev/sitemap.xml
