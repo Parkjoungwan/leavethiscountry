@@ -13,7 +13,7 @@ function showTooltip(e, countryKey, fromKey, purpose) {
 
   const cur = FROM_CURRENCY[fromKey];
   const visaLabel = data.visaFee === 0 ? "Free" : `$${data.visaFee}`;
-  const articleUrl = `articles/${fromKey}-to-${countryKey}-${purpose}-2026.html`;
+  const articleUrl = getArticleUrl(fromKey, countryKey, purpose);
 
   let costRows;
   if (purpose === "travel") {
@@ -49,7 +49,7 @@ function showTooltip(e, countryKey, fromKey, purpose) {
         <div class="tooltip-row"><span class="label">Processing</span><span class="val">${data.processingDays}</span></div>
         <div class="tooltip-row"><span class="label">Key condition</span><span class="val">${data.special}</span></div>
       </div>
-      <a class="tooltip-cta" href="${articleUrl}">See full comparison →</a>
+      ${articleUrl ? `<a class="tooltip-cta" href="${articleUrl}">See full comparison →</a>` : ''}
     </div>
   `;
 
