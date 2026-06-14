@@ -88,11 +88,14 @@ body {
 
 .country-cards {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
+  max-width: 800px;
 }
 
 .country-card {
-  width: 180px;
+  width: 160px;
   padding: 28px 20px;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -640,7 +643,8 @@ body {
   #topbar { padding: 0 12px; gap: 8px; }
   .topbar-logo { font-size: 14px; }
   .purpose-tab { padding: 5px 10px; font-size: 12px; }
-  .country-cards { flex-direction: column; }
+  .country-cards { gap: 12px; }
+  .country-card { width: 140px; padding: 20px 14px; }
   .headline h1 { font-size: 24px; }
   .legend { gap: 10px; }
   #rank-panel { display: none; }
