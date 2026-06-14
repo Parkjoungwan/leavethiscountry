@@ -72,29 +72,29 @@
   <div class="step1-content">
     <div class="logo">Leave<span>This</span>Country</div>
     <div class="headline">
-      <h1>Where are you leaving from?</h1>
-      <p>We'll show you where you can go — and how hard it is.</p>
+      <h1 data-i18n="step1_heading">Where are you leaving from?</h1>
+      <p data-i18n="step1_sub">We'll show you where you can go — and how hard it is.</p>
     </div>
     <div class="country-cards">
       <div class="country-card" data-country="india">
         <div class="flag">🇮🇳</div>
-        <div class="cname">India</div>
-        <div class="rank">Passport Rank #80</div>
+        <div class="cname" data-i18n="from_india">India</div>
+        <div class="rank"><span data-i18n="passport_rank">Passport Rank</span> #80</div>
       </div>
       <div class="country-card" data-country="korea">
         <div class="flag">🇰🇷</div>
-        <div class="cname">South Korea</div>
-        <div class="rank">Passport Rank #2</div>
+        <div class="cname" data-i18n="from_korea">South Korea</div>
+        <div class="rank"><span data-i18n="passport_rank">Passport Rank</span> #2</div>
       </div>
       <div class="country-card" data-country="japan">
         <div class="flag">🇯🇵</div>
-        <div class="cname">Japan</div>
-        <div class="rank">Passport Rank #1</div>
+        <div class="cname" data-i18n="from_japan">Japan</div>
+        <div class="rank"><span data-i18n="passport_rank">Passport Rank</span> #1</div>
       </div>
       <div class="country-card" data-country="hongkong">
         <div class="flag">🇭🇰</div>
-        <div class="cname">Hong Kong</div>
-        <div class="rank">Passport Rank #19</div>
+        <div class="cname" data-i18n="from_hongkong">Hong Kong</div>
+        <div class="rank"><span data-i18n="passport_rank">Passport Rank</span> #19</div>
       </div>
     </div>
   </div>
@@ -109,7 +109,7 @@
     <div class="topbar-sep"></div>
     <div class="from-badge">
       <span id="from-badge-flag"></span>
-      <span>From</span>
+      <span data-i18n="from_label">From</span>
       <strong id="from-badge-text"></strong>
       <span class="arrow-icon">→</span>
     </div>
@@ -120,7 +120,7 @@
       <button class="purpose-tab" data-purpose="immigration">🏠 Immigration</button>
       <button class="purpose-tab" data-purpose="travel">✈️ Travel</button>
     </div>
-    <button class="change-btn" id="change-country-btn">← Change country</button>
+    <button class="change-btn" id="change-country-btn" data-i18n="change_country">← Change country</button>
   </div>
 
   <!-- Map + Ranking Panel -->
@@ -128,18 +128,18 @@
     <div id="map-container">
       <div id="map-loading">
         <div class="spinner"></div>
-        Loading world map…
+        <span data-i18n="map_loading">Loading world map…</span>
       </div>
     </div>
 
     <!-- Ranking Side Panel -->
     <div id="rank-panel">
       <div class="rank-panel-header">
-        <span class="rank-panel-title">🏆 Rankings</span>
+        <span class="rank-panel-title" data-i18n="rankings">🏆 Rankings</span>
         <button class="rank-toggle" id="rank-toggle-btn" title="Collapse">‹</button>
       </div>
       <div class="rank-sort-row">
-        <span class="rank-sort-label">Sort by</span>
+        <span class="rank-sort-label" data-i18n="sort_by">Sort by</span>
         <select id="rank-sort-select">
           <option value="composite">Overall</option>
           <option value="difficulty">Easiest</option>
@@ -155,30 +155,43 @@
     <div class="legend">
       <div class="legend-item">
         <div class="legend-dot" style="background:#22d3a0"></div>
-        Easy
+        <span data-i18n="legend_easy">Easy</span>
       </div>
       <div class="legend-item">
         <div class="legend-dot" style="background:#f59e0b"></div>
-        Moderate
+        <span data-i18n="legend_moderate">Moderate</span>
       </div>
       <div class="legend-item">
         <div class="legend-dot" style="background:#f43f5e"></div>
-        Hard
+        <span data-i18n="legend_hard">Hard</span>
       </div>
       <div class="legend-item">
         <div class="legend-dot" style="background:#1e2d3a; border:1px solid #263548"></div>
-        No data
+        <span data-i18n="legend_nodata">No data</span>
       </div>
     </div>
-    <div class="legend-count">16 destinations covered</div>
+    <div class="legend-count" data-i18n="destinations_covered">16 destinations covered</div>
   </div>
 
+</div>
+
+<!-- ── Language Switcher ── -->
+<div id="lang-switcher">
+  <button id="lang-trigger">🌐 <span id="lang-current">EN</span></button>
+  <div id="lang-menu">
+    <button class="lang-opt active" data-lang="en">English</button>
+    <button class="lang-opt" data-lang="ko">한국어</button>
+    <button class="lang-opt" data-lang="zh">繁中</button>
+    <button class="lang-opt" data-lang="hi">हिंदी</button>
+    <button class="lang-opt" data-lang="ja">日本語</button>
+  </div>
 </div>
 
 <!-- ── Tooltip ── -->
 <div id="tooltip"></div>
 
 <!-- Scripts -->
+<script src="js/i18n.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
 <script src="data/countries.js"></script>
