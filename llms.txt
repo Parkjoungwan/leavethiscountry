@@ -1,6 +1,6 @@
 # LeaveThisCountry
 
-> Visa difficulty comparison tool for passport holders from India, South Korea, Japan, and Hong Kong. Covers work, study, immigration, and travel to 16 destination countries — with costs, processing times, and difficulty ratings (2026 data).
+> Visa difficulty comparison tool for passport holders from India, South Korea, Japan, Hong Kong, USA, France, and Tunisia. Covers work, study, immigration, and travel to 16 destination countries — with costs, processing times, and difficulty ratings (2026 data).
 
 LeaveThisCountry helps people compare visa options across four purposes (work, study, immigration, travel) and 16 destinations. Data includes official visa fees, annual cost estimates in local currency, processing timelines, difficulty ratings (easy/moderate/hard), and key conditions. All data sourced from official government immigration portals and updated for 2026.
 
@@ -9,6 +9,9 @@ LeaveThisCountry helps people compare visa options across four purposes (work, s
 - South Korea (Passport Rank #2)
 - Japan (Passport Rank #1)
 - Hong Kong (Passport Rank #19)
+- USA (Passport Rank #8)
+- France (Passport Rank #4)
+- Tunisia (Passport Rank #82)
 
 ## Supported Destination Countries
 Canada, Australia, Germany, Singapore, UAE, UK, Japan, USA, Thailand, France, Portugal, New Zealand, Netherlands, Malaysia, Italy, Spain
@@ -89,6 +92,58 @@ Canada, Australia, Germany, Singapore, UAE, UK, Japan, USA, Thailand, France, Po
 - [Hong Kong to Malaysia](https://leavethiscountry.cloud/articles/hongkong-to-malaysia-2026.html): Employment Pass, MM2H, Student Pass, visa-free entry
 - [Hong Kong to Italy](https://leavethiscountry.cloud/articles/hongkong-to-italy-2026.html): Decreto Flussi, EU Blue Card, Permesso di soggiorno UE, Schengen visa-free
 - [Hong Kong to Spain](https://leavethiscountry.cloud/articles/hongkong-to-spain-2026.html): Digital Nomad Visa, Highly Qualified Professionals, Schengen visa-free
+
+### From USA
+- [USA to Canada](https://leavethiscountry.cloud/articles/usa-to-canada-2026.html): CUSMA work permit, Study Permit, Express Entry PR, eTA travel
+- [USA to Germany](https://leavethiscountry.cloud/articles/usa-to-germany-2026.html): EU Blue Card, Opportunity Card, DAAD scholarships, Schengen visa-free
+- [USA to Australia](https://leavethiscountry.cloud/articles/usa-to-australia-2026.html): TSS 482 work visa, Student visa 500, eVisitor (free), Skilled Migration 189
+- [USA to Singapore](https://leavethiscountry.cloud/articles/usa-to-singapore-2026.html): Employment Pass, NUS/NTU study, 30-day visa-free travel
+- [USA to UAE](https://leavethiscountry.cloud/articles/usa-to-uae-2026.html): Employer visa, Golden Visa, 90-day visa on arrival
+- [USA to UK](https://leavethiscountry.cloud/articles/usa-to-uk-2026.html): Skilled Worker visa, Student visa, ILR, UK ETA £10
+- [USA to Japan](https://leavethiscountry.cloud/articles/usa-to-japan-2026.html): Engineer/Specialist visa, student CoE, HSP, 90-day visa-free
+- [USA to Portugal](https://leavethiscountry.cloud/articles/usa-to-portugal-2026.html): D3 Highly Qualified, D8 Digital Nomad, Schengen visa-free 90 days
+- [USA to Thailand](https://leavethiscountry.cloud/articles/usa-to-thailand-2026.html): Non-B work permit, ED student visa, LTR, 60-day visa-free
+- [USA to New Zealand](https://leavethiscountry.cloud/articles/usa-to-newzealand-2026.html): AEWV, Skilled Migrant, NZeTA 90-day entry
+- [USA to France](https://leavethiscountry.cloud/articles/usa-to-france-2026.html): Talent Passport, VLS-TS étudiant, Carte de Résident, ESTA Schengen visa-free
+- [USA to Netherlands](https://leavethiscountry.cloud/articles/usa-to-netherlands-2026.html): Highly Skilled Migrant, 30% tax ruling, Schengen visa-free
+- [USA to Italy](https://leavethiscountry.cloud/articles/usa-to-italy-2026.html): Decreto Flussi, EU Blue Card, Permesso di soggiorno, Schengen visa-free
+- [USA to Spain](https://leavethiscountry.cloud/articles/usa-to-spain-2026.html): Digital Nomad Visa, Highly Qualified Professionals, Schengen visa-free
+- [USA to Malaysia](https://leavethiscountry.cloud/articles/usa-to-malaysia-2026.html): Employment Pass Tier 1, Student Pass EMGS, 90-day visa-free
+
+### From France
+- [France to Canada](https://leavethiscountry.cloud/articles/france-to-canada-2026.html): IEC Working Holiday, Quebec PNP Francophone fast-track, Express Entry CRS bonus
+- [France to Germany](https://leavethiscountry.cloud/articles/france-to-germany-2026.html): EU Freedom of Movement — no visa needed for work, study, or residence
+- [France to Australia](https://leavethiscountry.cloud/articles/france-to-australia-2026.html): Working Holiday 417, ETA travel, student visa, Skilled Migration 189
+- [France to Singapore](https://leavethiscountry.cloud/articles/france-to-singapore-2026.html): Employment Pass, INSEAD Singapore campus, 30-day visa-free
+- [France to UAE](https://leavethiscountry.cloud/articles/france-to-uae-2026.html): Employer visa, Golden Visa, 90-day visa on arrival
+- [France to UK](https://leavethiscountry.cloud/articles/france-to-uk-2026.html): Post-Brexit Skilled Worker visa, Youth Mobility Scheme, UK ETA £10
+- [France to Japan](https://leavethiscountry.cloud/articles/france-to-japan-2026.html): PVT Working Holiday, Engineer visa, 90-day visa-free
+- [France to Portugal](https://leavethiscountry.cloud/articles/france-to-portugal-2026.html): EU Freedom of Movement — largest French expat community in EU
+- [France to USA](https://leavethiscountry.cloud/articles/france-to-usa-2026.html): ESTA Visa Waiver 90 days, F-1 student, H-1B work, Green Card DV Lottery
+- [France to Thailand](https://leavethiscountry.cloud/articles/france-to-thailand-2026.html): Non-B work permit, ED student visa, 60-day visa-free, PVT Working Holiday
+- [France to New Zealand](https://leavethiscountry.cloud/articles/france-to-newzealand-2026.html): PVT Working Holiday 23 months, AEWV, NZeTA, Skilled Migrant
+- [France to Netherlands](https://leavethiscountry.cloud/articles/france-to-netherlands-2026.html): EU Freedom of Movement — HSM visa, 30% tax ruling, Amsterdam and Rotterdam
+- [France to Italy](https://leavethiscountry.cloud/articles/france-to-italy-2026.html): EU Freedom of Movement — Milan, Bologna, Sapienza, no restrictions
+- [France to Spain](https://leavethiscountry.cloud/articles/france-to-spain-2026.html): EU Freedom of Movement — Barcelona, Madrid, NIE number, no restrictions
+- [France to Malaysia](https://leavethiscountry.cloud/articles/france-to-malaysia-2026.html): Employment Pass, Student Pass EMGS, MM2H, 90-day visa-free
+
+### From Tunisia
+- [Tunisia to Canada](https://leavethiscountry.cloud/articles/tunisia-to-canada-2026.html): Francophone Mobility, Quebec PNP French stream, Express Entry, TRV travel visa
+- [Tunisia to Germany](https://leavethiscountry.cloud/articles/tunisia-to-germany-2026.html): Germany-Tunisia Skilled Worker Agreement 2022, Chancenkarte, EU Blue Card
+- [Tunisia to Australia](https://leavethiscountry.cloud/articles/tunisia-to-australia-2026.html): TSS 482 employer sponsor, Student Visa GTE, Skilled Migration 189
+- [Tunisia to Singapore](https://leavethiscountry.cloud/articles/tunisia-to-singapore-2026.html): Employment Pass SGD 5,000+, Student Pass ICA, Singapore visit visa required
+- [Tunisia to UAE](https://leavethiscountry.cloud/articles/tunisia-to-uae-2026.html): Employer-sponsored visa, Golden Visa, 30-day visa on arrival
+- [Tunisia to UK](https://leavethiscountry.cloud/articles/tunisia-to-uk-2026.html): Skilled Worker visa, Standard Visitor Visa, high scrutiny process
+- [Tunisia to Japan](https://leavethiscountry.cloud/articles/tunisia-to-japan-2026.html): Engineer/Specialist visa, tourist visa required, high documentation burden
+- [Tunisia to Portugal](https://leavethiscountry.cloud/articles/tunisia-to-portugal-2026.html): D3 Highly Qualified, D8 Digital Nomad, Schengen visa French/Italian consulate
+- [Tunisia to USA](https://leavethiscountry.cloud/articles/tunisia-to-usa-2026.html): H-1B employer sponsor, F-1 student visa, B-2 with embassy interview, DV Lottery
+- [Tunisia to Thailand](https://leavethiscountry.cloud/articles/tunisia-to-thailand-2026.html): Non-B work permit, ED student visa, 30-day visa-free travel
+- [Tunisia to New Zealand](https://leavethiscountry.cloud/articles/tunisia-to-newzealand-2026.html): AEWV employer-sponsored, Skilled Migrant, standard visitor visa required
+- [Tunisia to France](https://leavethiscountry.cloud/articles/tunisia-to-france-2026.html): Franco-Tunisian bilateral treaty 1988, Carte de Résident after 3yr, largest Tunisian diaspora in Europe
+- [Tunisia to Netherlands](https://leavethiscountry.cloud/articles/tunisia-to-netherlands-2026.html): HSM visa €5,670+/month, IND strict, 5yr PR, Dutch integration exam
+- [Tunisia to Italy](https://leavethiscountry.cloud/articles/tunisia-to-italy-2026.html): Decreto Flussi Italy-Tunisia quota, historic Sicilian connection, EU Long-term Residence
+- [Tunisia to Spain](https://leavethiscountry.cloud/articles/tunisia-to-spain-2026.html): Spain-Tunisia bilateral seasonal workers, Arraigo social 3yr, Digital Nomad Visa
+- [Tunisia to Malaysia](https://leavethiscountry.cloud/articles/tunisia-to-malaysia-2026.html): Employment Pass STEM, OIC solidarity, MM2H, 30-day visa-free
 
 ## Data Notes
 
