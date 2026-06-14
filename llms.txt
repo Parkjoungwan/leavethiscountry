@@ -1,0 +1,100 @@
+# LeaveThisCountry
+
+> Visa difficulty comparison tool for passport holders from India, South Korea, Japan, and Hong Kong. Covers work, study, immigration, and travel to 16 destination countries — with costs, processing times, and difficulty ratings (2026 data).
+
+LeaveThisCountry helps people compare visa options across four purposes (work, study, immigration, travel) and 16 destinations. Data includes official visa fees, annual cost estimates in local currency, processing timelines, difficulty ratings (easy/moderate/hard), and key conditions. All data sourced from official government immigration portals and updated for 2026.
+
+## Supported Origin Countries
+- India (Passport Rank #80)
+- South Korea (Passport Rank #2)
+- Japan (Passport Rank #1)
+- Hong Kong (Passport Rank #19)
+
+## Supported Destination Countries
+Canada, Australia, Germany, Singapore, UAE, UK, Japan, USA, Thailand, France, Portugal, New Zealand, Netherlands, Malaysia, Italy, Spain
+
+## Site Structure
+
+- [Home — Interactive Visa Map](https://leavethiscountry.cloud/): Select origin country, choose purpose (work/study/immigration/travel), view color-coded world map and ranked destination list by difficulty, cost, or overall score.
+
+## Comprehensive Country Guides (2026)
+
+### From India
+- [India to Canada](https://leavethiscountry.cloud/articles/india-to-canada-2026.html): Express Entry, LMIA work permits, SDS study stream, PR pathways, visitor visa
+- [India to Australia](https://leavethiscountry.cloud/articles/india-to-australia-2026.html): TSS 482 work visa, student visa subclass 500, skilled migration 189/190
+- [India to Germany](https://leavethiscountry.cloud/articles/india-to-germany-2026.html): Opportunity Card, EU Blue Card, free public university tuition, Niederlassungserlaubnis
+- [India to Singapore](https://leavethiscountry.cloud/articles/india-to-singapore-2026.html): Employment Pass, Student Pass, PR application, 30-day visa-free travel
+- [India to UAE](https://leavethiscountry.cloud/articles/india-to-uae-2026.html): Golden Visa, employer-sponsored work visa, 14-day visa on arrival
+- [India to UK](https://leavethiscountry.cloud/articles/india-to-uk-2026.html): Skilled Worker visa, Student visa, ILR, Graduate visa
+- [India to USA](https://leavethiscountry.cloud/articles/india-to-usa-2026.html): H-1B lottery, F-1 student visa, EB Green Card backlog, B-2 tourist visa
+- [India to Japan](https://leavethiscountry.cloud/articles/india-to-japan-2026.html): Engineer/Specialist visa, student CoE, HSP highly skilled, PR after 10 years
+- [India to Thailand](https://leavethiscountry.cloud/articles/india-to-thailand-2026.html): Non-B work visa, ED student visa, LTR long-term resident, 30-day visa-free
+- [India to France](https://leavethiscountry.cloud/articles/india-to-france-2026.html): Talent Passport, Campus France, Carte de Résident, Schengen visa
+- [India to Portugal](https://leavethiscountry.cloud/articles/india-to-portugal-2026.html): D3 Highly Qualified, D7 Passive Income, D8 Digital Nomad, Golden Visa
+- [India to New Zealand](https://leavethiscountry.cloud/articles/india-to-newzealand-2026.html): AEWV employer work visa, Skilled Migrant, student visa, visitor visa
+- [India to Netherlands](https://leavethiscountry.cloud/articles/india-to-netherlands-2026.html): Highly Skilled Migrant, 30% tax ruling, IND processing, EU Blue Card
+- [India to Malaysia](https://leavethiscountry.cloud/articles/india-to-malaysia-2026.html): Employment Pass, Student Pass via EMGS, MM2H, 30-day visa-free
+- [India to Italy](https://leavethiscountry.cloud/articles/india-to-italy-2026.html): Decreto Flussi quota, EU Blue Card, Permesso di soggiorno, Schengen visa
+- [India to Spain](https://leavethiscountry.cloud/articles/india-to-spain-2026.html): Digital Nomad Visa, Highly Qualified Professionals, long-term EU residency
+
+### From South Korea
+- [Korea to Canada](https://leavethiscountry.cloud/articles/korea-to-canada-2026.html): IEC Working Holiday, Express Entry, PGWP, eTA travel
+- [Korea to Australia](https://leavethiscountry.cloud/articles/korea-to-australia-2026.html): Working Holiday 462, TSS 482, skilled migration, ETA travel
+- [Korea to Germany](https://leavethiscountry.cloud/articles/korea-to-germany-2026.html): Working Holiday, Opportunity Card, EU Blue Card, visa-free Schengen
+- [Korea to Singapore](https://leavethiscountry.cloud/articles/korea-to-singapore-2026.html): Employment Pass, NUS/NTU study, PR application, visa-free entry
+- [Korea to UAE](https://leavethiscountry.cloud/articles/korea-to-uae-2026.html): Employer-sponsored visa, Golden Visa, Korean companies (Samsung/LG), visa-free
+- [Korea to UK](https://leavethiscountry.cloud/articles/korea-to-uk-2026.html): Youth Mobility Scheme, Skilled Worker, Student visa, 6-month visa-free
+- [Korea to USA](https://leavethiscountry.cloud/articles/korea-to-usa-2026.html): H-1B, F-1, ESTA Visa Waiver 90-day visa-free, EB Green Card 3-5 years
+- [Korea to Japan](https://leavethiscountry.cloud/articles/korea-to-japan-2026.html): Working Holiday, Engineer visa, 90-day visa-free, largest Korean diaspora in Japan
+- [Korea to Thailand](https://leavethiscountry.cloud/articles/korea-to-thailand-2026.html): Non-B visa, work permit, LTR, 30-day visa-free
+- [Korea to France](https://leavethiscountry.cloud/articles/korea-to-france-2026.html): PVT Working Holiday, Talent Passport, Carte de Résident, Schengen visa-free
+- [Korea to Portugal](https://leavethiscountry.cloud/articles/korea-to-portugal-2026.html): D8 Digital Nomad, D7, PR after 5 years, Schengen visa-free
+- [Korea to New Zealand](https://leavethiscountry.cloud/articles/korea-to-newzealand-2026.html): Working Holiday, AEWV, Skilled Migrant, NZeTA travel
+- [Korea to Netherlands](https://leavethiscountry.cloud/articles/korea-to-netherlands-2026.html): HSM visa, ASML/Philips demand, 30% tax ruling, Schengen visa-free
+- [Korea to Malaysia](https://leavethiscountry.cloud/articles/korea-to-malaysia-2026.html): Employment Pass, Samsung/Lotte offices, MM2H, 90-day visa-free
+- [Korea to Italy](https://leavethiscountry.cloud/articles/korea-to-italy-2026.html): Decreto Flussi, EU Blue Card, Permesso di soggiorno UE, Schengen visa-free
+- [Korea to Spain](https://leavethiscountry.cloud/articles/korea-to-spain-2026.html): Digital Nomad Visa, Highly Qualified, long-term EU residency, Schengen visa-free
+
+### From Japan
+- [Japan to Canada](https://leavethiscountry.cloud/articles/japan-to-canada-2026.html): SDS study stream, IEC Working Holiday, Express Entry, eTA travel
+- [Japan to Australia](https://leavethiscountry.cloud/articles/japan-to-australia-2026.html): Working Holiday, student visa, skilled migration 189/190, ETA travel
+- [Japan to Germany](https://leavethiscountry.cloud/articles/japan-to-germany-2026.html): Working Holiday, Opportunity Card, EU Blue Card, visa-free Schengen
+- [Japan to Singapore](https://leavethiscountry.cloud/articles/japan-to-singapore-2026.html): Employment Pass, NUS/NTU study, PR application, visa-free entry
+- [Japan to UAE](https://leavethiscountry.cloud/articles/japan-to-uae-2026.html): Employer-sponsored, Golden Visa, Japan-UAE ties, visa-free entry
+- [Japan to UK](https://leavethiscountry.cloud/articles/japan-to-uk-2026.html): Youth Mobility Scheme, Skilled Worker, Graduate visa, 6-month visa-free
+- [Japan to USA](https://leavethiscountry.cloud/articles/japan-to-usa-2026.html): H-1B, L-1 intracompany, ESTA 90-day visa-free, EB Green Card
+- [Japan to Thailand](https://leavethiscountry.cloud/articles/japan-to-thailand-2026.html): Non-B work visa, ED student, LTR, 30-day visa-free
+- [Japan to France](https://leavethiscountry.cloud/articles/japan-to-france-2026.html): PVT Working Holiday, Talent Passport, Schengen visa-free
+- [Japan to Portugal](https://leavethiscountry.cloud/articles/japan-to-portugal-2026.html): D8 Digital Nomad, D7, PR after 5 years, Schengen visa-free
+- [Japan to New Zealand](https://leavethiscountry.cloud/articles/japan-to-newzealand-2026.html): Working Holiday, AEWV, Skilled Migrant, NZeTA travel
+- [Japan to Netherlands](https://leavethiscountry.cloud/articles/japan-to-netherlands-2026.html): HSM visa, Highly Skilled Migrant, 30% tax ruling, Schengen visa-free
+- [Japan to Malaysia](https://leavethiscountry.cloud/articles/japan-to-malaysia-2026.html): Employment Pass, Student Pass, MM2H, visa-free entry
+- [Japan to Italy](https://leavethiscountry.cloud/articles/japan-to-italy-2026.html): Decreto Flussi, EU Blue Card, Permesso di soggiorno UE, Schengen visa-free
+- [Japan to Spain](https://leavethiscountry.cloud/articles/japan-to-spain-2026.html): Digital Nomad Visa, Highly Qualified Professionals, Schengen visa-free
+
+### From Hong Kong
+- [Hong Kong to Canada](https://leavethiscountry.cloud/articles/hongkong-to-canada-2026.html): BN(O) pathway, Express Entry, PGWP, eTA travel
+- [Hong Kong to Australia](https://leavethiscountry.cloud/articles/hongkong-to-australia-2026.html): Working Holiday, student visa, skilled migration 189/190, ETA travel
+- [Hong Kong to Germany](https://leavethiscountry.cloud/articles/hongkong-to-germany-2026.html): Opportunity Card, EU Blue Card, Working Holiday, visa-free Schengen
+- [Hong Kong to Singapore](https://leavethiscountry.cloud/articles/hongkong-to-singapore-2026.html): Employment Pass, student Pass, PR application, visa-free entry
+- [Hong Kong to UAE](https://leavethiscountry.cloud/articles/hongkong-to-uae-2026.html): Employer-sponsored, Golden Visa, tax-free income, visa-free entry
+- [Hong Kong to UK](https://leavethiscountry.cloud/articles/hongkong-to-uk-2026.html): BN(O) visa 5-year pathway to PR, Skilled Worker, Student, visa-free entry
+- [Hong Kong to USA](https://leavethiscountry.cloud/articles/hongkong-to-usa-2026.html): H-1B, L-1, ESTA 90-day visa-free, EB Green Card
+- [Hong Kong to Japan](https://leavethiscountry.cloud/articles/hongkong-to-japan-2026.html): Working Holiday, Engineer visa, 90-day visa-free
+- [Hong Kong to Thailand](https://leavethiscountry.cloud/articles/hongkong-to-thailand-2026.html): Non-B work visa, LTR, Thailand Elite, 30-day visa-free
+- [Hong Kong to France](https://leavethiscountry.cloud/articles/hongkong-to-france-2026.html): Talent Passport, PVT Working Holiday, Schengen visa-free
+- [Hong Kong to Portugal](https://leavethiscountry.cloud/articles/hongkong-to-portugal-2026.html): D8 Digital Nomad, D7, Golden Visa, Schengen visa-free
+- [Hong Kong to New Zealand](https://leavethiscountry.cloud/articles/hongkong-to-newzealand-2026.html): Working Holiday, AEWV, Skilled Migrant, NZeTA travel
+- [Hong Kong to Netherlands](https://leavethiscountry.cloud/articles/hongkong-to-netherlands-2026.html): HSM visa, 30% tax ruling, IND fast-track, Schengen visa-free
+- [Hong Kong to Malaysia](https://leavethiscountry.cloud/articles/hongkong-to-malaysia-2026.html): Employment Pass, MM2H, Student Pass, visa-free entry
+- [Hong Kong to Italy](https://leavethiscountry.cloud/articles/hongkong-to-italy-2026.html): Decreto Flussi, EU Blue Card, Permesso di soggiorno UE, Schengen visa-free
+- [Hong Kong to Spain](https://leavethiscountry.cloud/articles/hongkong-to-spain-2026.html): Digital Nomad Visa, Highly Qualified Professionals, Schengen visa-free
+
+## Data Notes
+
+All visa difficulty ratings use three tiers:
+- Easy: straightforward process, high approval rate, minimal documentation
+- Moderate: requires preparation, some conditions, standard approval rate
+- Hard: complex requirements, quotas, lottery systems, or long backlogs
+
+Cost estimates are annual figures in USD unless otherwise noted. Processing times reflect official government estimates as of 2026. This site provides general information only — not legal or immigration advice.
