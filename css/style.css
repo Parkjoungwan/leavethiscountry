@@ -602,6 +602,10 @@ body {
 .lang-opt:hover { background: #111a2a; color: var(--text); }
 .lang-opt.active { color: var(--accent); font-weight: 600; }
 
+/* Article nav lang switcher */
+.art-nav .lang-sw { margin-left: auto; }
+.art-nav .lang-menu { right: 0; }
+
 /* step1: absolute bottom-right of the fixed step1 overlay */
 #lang-sw-s1 {
   position: absolute;
