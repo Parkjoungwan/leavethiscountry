@@ -9,10 +9,10 @@ function showTooltip(e, countryKey, fromKey, purpose) {
   if (!data || !country) return;
 
   const diff = DIFFICULTY_CONFIG[data.difficulty] || DIFFICULTY_CONFIG.none;
-  const purposeLabel = PURPOSES[purpose].label;
+  const T = (key) => (typeof I18N !== "undefined") ? I18N.t(key) : key;
 
   const cur = FROM_CURRENCY[fromKey];
-  const visaLabel = data.visaFee === 0 ? "Free" : `$${data.visaFee}`;
+  const visaLabel = data.visaFee === 0 ? T("tt_free") : `$${data.visaFee}`;
   const articleUrl = getArticleUrl(fromKey, countryKey, purpose);
 
   let costRows;
@@ -20,17 +20,17 @@ function showTooltip(e, countryKey, fromKey, purpose) {
     const weeklyStr = cur ? cur.format(data.weeklyLiving || 0) : `$${data.weeklyLiving || 0}`;
     const flightStr = cur ? cur.format(data.flightMinUSD || 0) : `$${data.flightMinUSD || 0}`;
     costRows = `
-        <div class="tooltip-row"><span class="label">Visa fee</span><span class="val">${visaLabel}</span></div>
-        <div class="tooltip-row"><span class="label">Weekly living</span><span class="val">${weeklyStr}/wk</span></div>
-        <div class="tooltip-row"><span class="label">Cheapest flight</span><span class="val">from ${flightStr}</span></div>`;
+        <div class="tooltip-row"><span class="label">${T("tt_visa_fee")}</span><span class="val">${visaLabel}</span></div>
+        <div class="tooltip-row"><span class="label">${T("tt_weekly")}</span><span class="val">${weeklyStr}${T("tt_per_week")}</span></div>
+        <div class="tooltip-row"><span class="label">${T("tt_flight")}</span><span class="val">${T("tt_from")} ${flightStr}</span></div>`;
   } else {
     const localCost = data.cost.annual === 0
-      ? "Free"
+      ? T("tt_free")
       : `${cur.formatFull(data.cost.annual)}/yr`;
     const nativeCost = data.cost.label;
     costRows = `
-        <div class="tooltip-row"><span class="label">Est. cost</span><span class="val">${localCost} <span style="color:var(--text-muted);font-size:11px">(${nativeCost})</span></span></div>
-        <div class="tooltip-row"><span class="label">Visa fee</span><span class="val">${visaLabel}</span></div>`;
+        <div class="tooltip-row"><span class="label">${T("tt_cost")}</span><span class="val">${localCost} <span style="color:var(--text-muted);font-size:11px">(${nativeCost})</span></span></div>
+        <div class="tooltip-row"><span class="label">${T("tt_visa_fee")}</span><span class="val">${visaLabel}</span></div>`;
   }
 
   tooltip.innerHTML = `
@@ -40,16 +40,16 @@ function showTooltip(e, countryKey, fromKey, purpose) {
           <span>${country.flag}</span>
           <span>${country.name}</span>
         </div>
-        <span class="diff-badge ${data.difficulty}">${diff.label}</span>
+        <span class="diff-badge ${data.difficulty}">${T("diff_" + data.difficulty)}</span>
       </div>
       <div class="tooltip-divider"></div>
       <div class="tooltip-rows">
-        <div class="tooltip-row"><span class="label">Purpose</span><span class="val">${purposeLabel}</span></div>
+        <div class="tooltip-row"><span class="label">${T("tt_purpose")}</span><span class="val">${T("purpose_" + purpose)}</span></div>
         ${costRows}
-        <div class="tooltip-row"><span class="label">Processing</span><span class="val">${data.processingDays}</span></div>
-        <div class="tooltip-row"><span class="label">Key condition</span><span class="val">${data.special}</span></div>
+        <div class="tooltip-row"><span class="label">${T("tt_processing")}</span><span class="val">${data.processingDays}</span></div>
+        <div class="tooltip-row"><span class="label">${T("tt_condition")}</span><span class="val">${data.special}</span></div>
       </div>
-      ${articleUrl ? `<a class="tooltip-cta" href="${articleUrl}">See full comparison →</a>` : ''}
+      ${articleUrl ? `<a class="tooltip-cta" href="${articleUrl}">${T("tt_cta")}</a>` : ''}
     </div>
   `;
 

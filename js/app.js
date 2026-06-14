@@ -32,7 +32,8 @@ function selectCountry(fromKey) {
   const fromFlag = document.getElementById("from-badge-flag");
 
   const country = FROM_COUNTRIES[fromKey];
-  fromBadge.textContent = country.name;
+  fromBadge.textContent = (typeof I18N !== "undefined") ? I18N.t("from_" + fromKey) : country.name;
+  fromBadge.dataset.fromKey = fromKey;
   fromFlag.textContent = country.flag;
 
   step1.classList.add("fade-out");

@@ -57,19 +57,19 @@ function renderRankings(fromKey, purpose, sortMode) {
 
   panel.innerHTML = rankings.map((item, i) => {
     const country = TO_COUNTRIES[item.key];
-    const diff = DIFFICULTY_CONFIG[item.data.difficulty];
     const medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : `#${i + 1}`;
     const cur = FROM_CURRENCY[fromKey];
+    const T = (key) => (typeof I18N !== "undefined") ? I18N.t(key) : key;
 
     let costStr;
     if (purpose === "travel") {
       const flightStr = cur ? cur.format(item.data.flightMinUSD || 0) : `$${item.data.flightMinUSD || 0}`;
       const weeklyStr = cur ? cur.format(item.data.weeklyLiving || 0) : `$${item.data.weeklyLiving || 0}`;
-      const visaStr = item.data.visaFee === 0 ? "Free" : (cur ? cur.format(item.data.visaFee) : `$${item.data.visaFee}`);
-      costStr = `✈️ ${flightStr} · 🏠 ${weeklyStr}/wk`;
+      const visaStr = item.data.visaFee === 0 ? T("cost_free") : (cur ? cur.format(item.data.visaFee) : `$${item.data.visaFee}`);
+      costStr = `✈️ ${flightStr} · 🏠 ${weeklyStr}${T("tt_per_week")}`;
       if (item.data.visaFee > 0) costStr += ` · visa ${visaStr}`;
     } else {
-      costStr = cur ? cur.format(item.data.cost.annual) : (item.data.cost.annual === 0 ? "Free" : `~$${item.data.cost.annual.toLocaleString()}`);
+      costStr = cur ? cur.format(item.data.cost.annual) : (item.data.cost.annual === 0 ? T("cost_free") : `~$${item.data.cost.annual.toLocaleString()}`);
     }
 
     return `
@@ -78,7 +78,7 @@ function renderRankings(fromKey, purpose, sortMode) {
         <div class="rank-info">
           <div class="rank-name">${country.flag} ${country.name}</div>
           <div class="rank-meta">
-            <span class="rank-diff rank-diff-${item.data.difficulty}">${diff.label}</span>
+            <span class="rank-diff rank-diff-${item.data.difficulty}">${T("diff_" + item.data.difficulty)}</span>
             <span class="rank-cost">${costStr}</span>
           </div>
         </div>
