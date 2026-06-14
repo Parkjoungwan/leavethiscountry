@@ -32,6 +32,13 @@
     "name": "LeaveThisCountry",
     "url": "https://leavethiscountry.cloud",
     "description": "Compare visa costs, difficulty, and processing times across 16 top destinations. Study, work, immigrate, or travel — find the easiest path from India, Korea, Japan, or Hong Kong.",
+    "keywords": "visa comparison, work visa, study visa, immigration, India visa, Korea visa, Japan visa, Hong Kong visa, Canada immigration, Australia visa, Germany visa, express entry, H-1B, skilled worker visa",
+    "about": [
+      {"@type": "Thing", "name": "Work Visa", "description": "Work permit and employment visa requirements for skilled workers"},
+      {"@type": "Thing", "name": "Study Abroad", "description": "Student visa options and international education pathways"},
+      {"@type": "Thing", "name": "Immigration", "description": "Permanent residence and citizenship pathways"},
+      {"@type": "Thing", "name": "Travel Visa", "description": "Tourist and visitor visa requirements and visa-free access"}
+    ],
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://leavethiscountry.cloud/",
@@ -48,11 +55,36 @@
     "applicationCategory": "TravelApplication",
     "operatingSystem": "Any",
     "description": "Interactive world map comparing visa difficulty, cost, and processing time across 16 destinations for India, Korea, Japan, and Hong Kong passport holders.",
+    "featureList": [
+      "Visa difficulty ratings (Easy/Moderate/Hard) for 16 destinations",
+      "Annual cost estimates in local currency",
+      "Official processing time data",
+      "Comparison across Work, Study, Immigration, and Travel purposes",
+      "63 comprehensive country-pair guides for 2026"
+    ],
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".headline h1", ".headline p"]
     }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Visa Difficulty & Cost Dataset 2026",
+    "description": "Visa difficulty ratings, processing times, annual cost estimates, and key conditions for 16 destination countries across 4 immigration purposes (work, study, immigration, travel) from India, South Korea, Japan, and Hong Kong. Data sourced from official government immigration portals.",
+    "url": "https://leavethiscountry.cloud",
+    "license": "https://leavethiscountry.cloud/disclaimer.html",
+    "creator": {"@type": "Organization", "name": "LeaveThisCountry", "url": "https://leavethiscountry.cloud"},
+    "temporalCoverage": "2026",
+    "variableMeasured": ["Visa difficulty", "Processing time", "Annual cost", "Visa fee"],
+    "spatialCoverage": ["India", "South Korea", "Japan", "Hong Kong", "Canada", "Australia", "Germany", "Singapore", "UAE", "UK", "USA", "Thailand", "France", "Portugal", "New Zealand", "Netherlands", "Malaysia", "Italy", "Spain"]
   }
   </script>
 
