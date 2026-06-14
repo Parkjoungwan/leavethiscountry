@@ -119,7 +119,7 @@ const I18N = (() => {
       el.textContent = t(el.dataset.i18n);
     });
 
-    // Update purpose tab text (has data-purpose, not data-i18n)
+    // Update purpose tab text
     document.querySelectorAll(".purpose-tab[data-purpose]").forEach(btn => {
       btn.textContent = t("tab_" + btn.dataset.purpose);
     });
@@ -132,14 +132,15 @@ const I18N = (() => {
       sel.options[2].text = t("sort_cheapest");
     }
 
-    // Update lang switcher active state + trigger label
+    // Update all switcher instances
     document.querySelectorAll(".lang-opt").forEach(btn => {
       btn.classList.toggle("active", btn.dataset.lang === lang);
     });
-    const trigger = document.getElementById("lang-current");
-    if (trigger) trigger.textContent = lang.toUpperCase();
+    document.querySelectorAll(".lang-current").forEach(el => {
+      el.textContent = lang.toUpperCase();
+    });
 
-    // Update from-badge country name if a country is selected
+    // Update from-badge country name
     const badgeText = document.getElementById("from-badge-text");
     if (badgeText && badgeText.dataset.fromKey) {
       badgeText.textContent = t("from_" + badgeText.dataset.fromKey);
@@ -154,23 +155,33 @@ const I18N = (() => {
   function init() {
     applyLang(lang);
 
-    const trigger = document.getElementById("lang-trigger");
-    const menu = document.getElementById("lang-menu");
+    // Wire up all .lang-sw instances
+    document.querySelectorAll(".lang-sw").forEach(sw => {
+      const trigger = sw.querySelector(".lang-trigger");
+      const menu = sw.querySelector(".lang-menu");
+      if (!trigger || !menu) return;
 
-    if (trigger && menu) {
       trigger.addEventListener("click", e => {
         e.stopPropagation();
+        // Close other open menus
+        document.querySelectorAll(".lang-menu.open").forEach(m => {
+          if (m !== menu) m.classList.remove("open");
+        });
         menu.classList.toggle("open");
       });
-      document.addEventListener("click", () => menu.classList.remove("open"));
-      document.querySelectorAll(".lang-opt").forEach(btn => {
-        btn.addEventListener("click", e => {
-          e.stopPropagation();
-          applyLang(btn.dataset.lang);
-          menu.classList.remove("open");
-        });
+    });
+
+    document.querySelectorAll(".lang-opt").forEach(btn => {
+      btn.addEventListener("click", e => {
+        e.stopPropagation();
+        applyLang(btn.dataset.lang);
+        document.querySelectorAll(".lang-menu").forEach(m => m.classList.remove("open"));
       });
-    }
+    });
+
+    document.addEventListener("click", () => {
+      document.querySelectorAll(".lang-menu").forEach(m => m.classList.remove("open"));
+    });
   }
 
   return { t, setLang: applyLang, init };
