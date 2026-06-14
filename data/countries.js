@@ -2,7 +2,10 @@ const FROM_COUNTRIES = {
   india:    { name: "India",     flag: "🇮🇳", code: "IN", passportRank: 80 },
   korea:    { name: "South Korea", flag: "🇰🇷", code: "KR", passportRank: 2 },
   japan:    { name: "Japan",     flag: "🇯🇵", code: "JP", passportRank: 1 },
-  hongkong: { name: "Hong Kong", flag: "🇭🇰", code: "HK", passportRank: 19 }
+  hongkong: { name: "Hong Kong", flag: "🇭🇰", code: "HK", passportRank: 19 },
+  usa:      { name: "USA",       flag: "🇺🇸", code: "US", passportRank: 8  },
+  france:   { name: "France",    flag: "🇫🇷", code: "FR", passportRank: 4  },
+  tunisia:  { name: "Tunisia",   flag: "🇹🇳", code: "TN", passportRank: 82 }
 };
 
 // Exchange rates vs USD — update quarterly
@@ -70,6 +73,49 @@ const FROM_CURRENCY = {
       if (usd === 0) return "Free";
       const v = Math.round(usd * this.rateFromUSD);
       return `HK$${v.toLocaleString("zh-HK")}`;
+    }
+  },
+  usa: {
+    code: "USD", symbol: "$", rateFromUSD: 1,
+    format(usd) {
+      if (usd === 0) return "Free";
+      if (usd >= 1000000) return `$${(usd / 1000000).toFixed(1)}M`;
+      if (usd >= 1000)    return `$${Math.round(usd / 1000)}K`;
+      return `$${usd}`;
+    },
+    formatFull(usd) {
+      if (usd === 0) return "Free";
+      return `$${usd.toLocaleString("en-US")}`;
+    }
+  },
+  france: {
+    code: "EUR", symbol: "€", rateFromUSD: 0.92,
+    format(usd) {
+      if (usd === 0) return "Free";
+      const v = Math.round(usd * this.rateFromUSD);
+      if (v >= 1000000) return `€${(v / 1000000).toFixed(1)}M`;
+      if (v >= 1000)    return `€${Math.round(v / 1000)}K`;
+      return `€${v}`;
+    },
+    formatFull(usd) {
+      if (usd === 0) return "Free";
+      const v = Math.round(usd * this.rateFromUSD);
+      return `€${v.toLocaleString("fr-FR")}`;
+    }
+  },
+  tunisia: {
+    code: "TND", symbol: "DT", rateFromUSD: 3.1,
+    format(usd) {
+      if (usd === 0) return "Free";
+      const v = Math.round(usd * this.rateFromUSD);
+      if (v >= 1000000) return `DT${(v / 1000000).toFixed(1)}M`;
+      if (v >= 1000)    return `DT${Math.round(v / 1000)}K`;
+      return `DT${v}`;
+    },
+    formatFull(usd) {
+      if (usd === 0) return "Free";
+      const v = Math.round(usd * this.rateFromUSD);
+      return `DT${v.toLocaleString("ar-TN")}`;
     }
   }
 };
@@ -2294,6 +2340,1600 @@ const DATA = {
         visaFee: 0,
         weeklyLiving: 80,
         flightMinUSD: 35,
+        officialUrl: "https://www.imi.gov.my/index.php/en/main-services/visa/visa-exemption.html"
+      }
+    }
+  },
+  usa: {
+    study: {
+      canada: {
+        cost: { annual: 30000, currency: "USD", label: "CAD 30K~45K/yr" },
+        difficulty: "easy",
+        processingDays: "8~12 weeks",
+        special: "Study Permit easy for Americans. No GIC required. CUSMA/USMCA professionals pathway post-study. Quebec French programs available.",
+        visaFee: 150,
+        officialUrl: "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada.html"
+      },
+      germany: {
+        cost: { annual: 10000, currency: "USD", label: "€8K~12K/yr" },
+        difficulty: "easy",
+        processingDays: "60~90 days",
+        special: "German student visa required. Public universities nearly free (€170-350/semester). Blocked account €11,904. DAAD scholarships available for Americans.",
+        visaFee: 75,
+        officialUrl: "https://www.make-it-in-germany.com/en/study-training/study/studying-in-germany"
+      },
+      australia: {
+        cost: { annual: 32000, currency: "USD", label: "AUD 30K~45K/yr" },
+        difficulty: "easy",
+        processingDays: "14~21 days",
+        special: "Student visa 500. Americans fast-tracked in processing. GTE statement required. 48hr/week work allowed during study. Post-study Graduate visa 2-4yr.",
+        visaFee: 710,
+        officialUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500"
+      },
+      singapore: {
+        cost: { annual: 22000, currency: "USD", label: "SGD 20K~30K/yr" },
+        difficulty: "easy",
+        processingDays: "14~28 days",
+        special: "Student Pass via ICA. NUS and NTU attract many American students. Strong English instruction. Excellent APAC job placement for graduates.",
+        visaFee: 30,
+        officialUrl: "https://www.ica.gov.sg/reside/STP/apply"
+      },
+      uae: {
+        cost: { annual: 18000, currency: "USD", label: "AED 50K~80K/yr" },
+        difficulty: "easy",
+        processingDays: "7 days",
+        special: "MBZUAI and Khalifa University attract international students. Visa linked to enrollment. Strong scholarships. Tax-free living.",
+        visaFee: 270,
+        officialUrl: "https://u.ae/en/information-and-services/visa-and-emirates-id/types-of-visa/student-visa"
+      },
+      uk: {
+        cost: { annual: 35000, currency: "USD", label: "£20K~35K/yr" },
+        difficulty: "easy",
+        processingDays: "3 weeks",
+        special: "Student visa for Americans same as other nationalities. IHS fee £776/yr. 2yr Graduate visa after study. Oxford, LSE, Imperial popular choices.",
+        visaFee: 490,
+        officialUrl: "https://www.gov.uk/student-visa"
+      },
+      japan: {
+        cost: { annual: 12000, currency: "USD", label: "¥1.2M~2M/yr" },
+        difficulty: "moderate",
+        processingDays: "3~5 days (after CoE: 3 months)",
+        special: "CoE from school takes 3 months. English-taught programs expanding at Waseda, Keio. JET Programme also available for Americans after graduation.",
+        visaFee: 30,
+        officialUrl: "https://www.moj.go.jp/isa/applications/status/student.html"
+      },
+      portugal: {
+        cost: { annual: 9000, currency: "USD", label: "€7K~12K/yr" },
+        difficulty: "easy",
+        processingDays: "30 days",
+        special: "D4 Student Visa. Public universities €700-1,500/yr. EU access after residency. Popular with American students for affordability and lifestyle.",
+        visaFee: 90,
+        officialUrl: "https://www.sef.pt/en/pages/conteudo-detalhe.aspx?nID=28"
+      },
+      thailand: {
+        cost: { annual: 5000, currency: "USD", label: "฿120K~200K/yr" },
+        difficulty: "easy",
+        processingDays: "7 days",
+        special: "ED (Education) visa. Many English-taught programs at MUIC and Mahidol International. Low cost of living. Popular with American students.",
+        visaFee: 40,
+        officialUrl: "https://www.immigration.go.th"
+      },
+      newzealand: {
+        cost: { annual: 25000, currency: "USD", label: "NZD 25K~40K/yr" },
+        difficulty: "easy",
+        processingDays: "14 days",
+        special: "Post-study work visa 3yr. Part-time work 20hr/wk during study. Auckland and Otago University popular with American students.",
+        visaFee: 330,
+        officialUrl: "https://www.immigration.govt.nz/new-zealand-visas/apply-for-a-visa/about-visa/fee-paying-student-visa"
+      },
+      france: {
+        cost: { annual: 12000, currency: "USD", label: "€8K~15K/yr" },
+        difficulty: "moderate",
+        processingDays: "30 days",
+        special: "Long-stay student visa (VLS-TS). Campus France procedure mandatory for Grandes Écoles. Public universities from €170/yr. French language helpful. Paris and Lyon top choices.",
+        visaFee: 99,
+        officialUrl: "https://www.campusfrance.org/en"
+      },
+      netherlands: {
+        cost: { annual: 18000, currency: "USD", label: "€12K~20K/yr" },
+        difficulty: "easy",
+        processingDays: "30 days",
+        special: "MVV + residence permit via university. Orientation year after graduation. TU Delft, Leiden, UvA popular with Americans. English-taught programs widely available.",
+        visaFee: 207,
+        officialUrl: "https://www.nuffic.nl/en/subjects/studying-in-the-netherlands"
+      },
+      italy: {
+        cost: { annual: 8000, currency: "USD", label: "€5K~15K/yr" },
+        difficulty: "easy",
+        processingDays: "15~30 days",
+        special: "Type D national visa. Public universities €900~4,000/yr. Politecnico di Milano top ranked. Many Americans study art and design in Florence.",
+        visaFee: 116,
+        officialUrl: "https://www.studiare-in-italia.it/studentistranieri/index_en.html"
+      },
+      spain: {
+        cost: { annual: 10000, currency: "USD", label: "€8K~14K/yr" },
+        difficulty: "easy",
+        processingDays: "15~30 days",
+        special: "National D student visa. Public universities from €800/yr. NIE number required. Barcelona and Madrid top choices for American students abroad.",
+        visaFee: 80,
+        officialUrl: "https://www.studyinspain.info"
+      },
+      malaysia: {
+        cost: { annual: 8000, currency: "USD", label: "MYR 25K~45K/yr" },
+        difficulty: "easy",
+        processingDays: "7~14 days",
+        special: "Student Pass via EMGS. Low cost vs. Western universities. UTM and UM ranked top in Southeast Asia. English-medium instruction.",
+        visaFee: 110,
+        officialUrl: "https://educationmalaysia.gov.my"
+      }
+    },
+    work: {
+      canada: {
+        cost: { annual: 3000, currency: "USD", label: "Minimal (CUSMA treaty)" },
+        difficulty: "easy",
+        processingDays: "3~7 days (CUSMA)",
+        special: "CUSMA (USMCA) covers 60+ professions — no LMIA needed. Present qualifications at port of entry. 1-year permit, renewable. Express Entry also available.",
+        visaFee: 155,
+        officialUrl: "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/cusma.html"
+      },
+      germany: {
+        cost: { annual: 2000, currency: "USD", label: "€120~450 visa fee" },
+        difficulty: "easy",
+        processingDays: "14~21 days",
+        special: "EU Blue Card for salary €45K+. Opportunity Card for job seekers. Americans in high demand in tech, auto, and engineering sectors.",
+        visaFee: 120,
+        officialUrl: "https://www.make-it-in-germany.com/en/visa-residence/types/work-qualified-professionals"
+      },
+      australia: {
+        cost: { annual: 4640, currency: "USD", label: "AUD 4,640 visa fee" },
+        difficulty: "moderate",
+        processingDays: "60~90 days",
+        special: "TSS (482) employer sponsor required. Points-tested skilled migration via 189/190. Large American expat community in Sydney and Melbourne.",
+        visaFee: 3115,
+        officialUrl: "https://immi.homeaffairs.gov.au/visas/working-in-australia"
+      },
+      singapore: {
+        cost: { annual: 1200, currency: "USD", label: "SGD 105 EP fee" },
+        difficulty: "moderate",
+        processingDays: "3~8 weeks",
+        special: "Employment Pass requires salary SGD 5,000+/month. American professionals highly competitive in finance, tech, and consulting. Employer applies via MyMOM Portal.",
+        visaFee: 105,
+        officialUrl: "https://www.mom.gov.sg/passes-and-permits/employment-pass"
+      },
+      uae: {
+        cost: { annual: 1500, currency: "USD", label: "AED 500~2,000 fees" },
+        difficulty: "easy",
+        processingDays: "2~4 weeks",
+        special: "Employer-sponsored work visa easy for Americans. Golden Visa (10yr) for salary AED 30K+/month. Tax-free income. Dubai and Abu Dhabi welcome US professionals.",
+        visaFee: 500,
+        officialUrl: "https://u.ae/en/information-and-services/visa-and-emirates-id/types-of-visa/employment-visa"
+      },
+      uk: {
+        cost: { annual: 1500, currency: "USD", label: "£239 visa fee" },
+        difficulty: "moderate",
+        processingDays: "3~8 weeks",
+        special: "Skilled Worker visa. Certificate of Sponsorship from UK employer required. Salary threshold £38,700+. Americans competitive in finance, law, and tech sectors.",
+        visaFee: 239,
+        officialUrl: "https://www.gov.uk/skilled-worker-visa"
+      },
+      japan: {
+        cost: { annual: 2000, currency: "USD", label: "¥3,000 visa fee" },
+        difficulty: "moderate",
+        processingDays: "1~3 months",
+        special: "Engineer/Specialist in Humanities visa. JET Programme entry available. American professionals recruited by Japanese MNCs. HSP highly skilled professional fast-track.",
+        visaFee: 20,
+        officialUrl: "https://www.moj.go.jp/isa/applications/status/engineer.html"
+      },
+      portugal: {
+        cost: { annual: 2000, currency: "USD", label: "€83~440 visa fee" },
+        difficulty: "easy",
+        processingDays: "30~60 days",
+        special: "D3 Highly Qualified or D8 Digital Nomad Visa (income €3,480+/month). Popular destination for American remote workers. Lisbon startup scene growing rapidly.",
+        visaFee: 83,
+        officialUrl: "https://aima.gov.pt/en"
+      },
+      thailand: {
+        cost: { annual: 2000, currency: "USD", label: "฿2,000 Non-B + permit" },
+        difficulty: "moderate",
+        processingDays: "3~4 weeks",
+        special: "Non-Immigrant B visa + Work Permit required. BOI company sponsorship helps. LTR (Long-Term Resident) Visa for high-income remote workers.",
+        visaFee: 80,
+        officialUrl: "https://www.dbd.go.th/en/index.php"
+      },
+      newzealand: {
+        cost: { annual: 700, currency: "USD", label: "NZD 700 AEWV fee" },
+        difficulty: "easy",
+        processingDays: "14~28 days",
+        special: "Accredited Employer Work Visa (AEWV). Americans in demand for tech and finance. Skilled Migrant PR pathway available. English-speaking environment.",
+        visaFee: 470,
+        officialUrl: "https://www.immigration.govt.nz/new-zealand-visas/apply-for-a-visa/about-visa/accredited-employer-work-visa"
+      },
+      france: {
+        cost: { annual: 2000, currency: "USD", label: "€99 Talent Passport" },
+        difficulty: "moderate",
+        processingDays: "30~60 days",
+        special: "Talent Passport for salary €35K+ or in-demand profession. Employer sponsorship for other cases. French language helpful but many tech roles are English-only.",
+        visaFee: 99,
+        officialUrl: "https://www.service-public.fr/particuliers/vosdroits/F16922"
+      },
+      netherlands: {
+        cost: { annual: 1500, currency: "USD", label: "€207 HSM permit" },
+        difficulty: "easy",
+        processingDays: "30~45 days",
+        special: "Highly Skilled Migrant visa. Salary threshold €5,670+/month. ASML, Booking.com, Philips hire Americans. 30% tax ruling reduces effective tax rate significantly.",
+        visaFee: 207,
+        officialUrl: "https://ind.nl/en/work/working_in_the_Netherlands/Pages/Highly-skilled-migrant.aspx"
+      },
+      italy: {
+        cost: { annual: 1500, currency: "USD", label: "€116 visa fee" },
+        difficulty: "moderate",
+        processingDays: "30~60 days",
+        special: "Decreto Flussi quota for non-EU workers including Americans. EU Blue Card via local company also viable. Permesso di soggiorno required.",
+        visaFee: 116,
+        officialUrl: "https://www.lavoro.gov.it/en"
+      },
+      spain: {
+        cost: { annual: 1500, currency: "USD", label: "€80~200 visa fee" },
+        difficulty: "moderate",
+        processingDays: "1~3 months",
+        special: "Digital Nomad Visa for remote workers (income €2,300+/month). Highly Qualified Professionals visa. Growing US expat scene in Barcelona and Madrid.",
+        visaFee: 80,
+        officialUrl: "https://www.inclusion.gob.es/web/migraciones/w/nómadas-digitales"
+      },
+      malaysia: {
+        cost: { annual: 1000, currency: "USD", label: "MYR 1,500 EP fee" },
+        difficulty: "easy",
+        processingDays: "2~4 weeks",
+        special: "Employment Pass Tier 1 (salary RM 10,000+). Many MNCs hire Americans for KL offices. Tech incentive zones and tax benefits. English working environment.",
+        visaFee: 330,
+        officialUrl: "https://www.esd.imi.gov.my"
+      }
+    },
+    immigration: {
+      canada: {
+        cost: { annual: 0, currency: "USD", label: "CAD 1,325~2,140 fees" },
+        difficulty: "moderate",
+        processingDays: "6~12 months",
+        special: "Express Entry: CRS 460+ typical. English native = high language score. CUSMA workers can switch to PR track. Americans among top 3 nationalities in Express Entry draws.",
+        visaFee: 1325,
+        officialUrl: "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html"
+      },
+      germany: {
+        cost: { annual: 0, currency: "USD", label: "€120~500 permit fees" },
+        difficulty: "easy",
+        processingDays: "3~6 months",
+        special: "Niederlassungserlaubnis after 4-5 years work. EU Blue Card holders eligible after 2 years. High STEM demand. Germany welcoming of US professionals.",
+        visaFee: 120,
+        officialUrl: "https://www.make-it-in-germany.com/en/visa-residence/types/settlement-permit"
+      },
+      australia: {
+        cost: { annual: 0, currency: "USD", label: "AUD 4,195 visa fee" },
+        difficulty: "moderate",
+        processingDays: "12~24 months",
+        special: "Points-based 189/190 Skilled Migration. Americans score high: English, education. State nomination (190) adds 5 points. Strong US-Australia bilateral ties.",
+        visaFee: 4115,
+        officialUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-independent-189"
+      },
+      singapore: {
+        cost: { annual: 0, currency: "USD", label: "Varies" },
+        difficulty: "hard",
+        processingDays: "2~5 years",
+        special: "PR application highly discretionary. Americans have good standing but must demonstrate strong economic ties, long-term employment, and community integration.",
+        visaFee: 100,
+        officialUrl: "https://www.ica.gov.sg/PR"
+      },
+      uae: {
+        cost: { annual: 0, currency: "USD", label: "AED 2,800~10,000" },
+        difficulty: "easy",
+        processingDays: "1~2 years",
+        special: "Golden Visa (10yr): salary AED 30K+/month, $545K property investment, or exceptional talent. No citizenship path but secure long-term residence.",
+        visaFee: 2800,
+        officialUrl: "https://u.ae/en/information-and-services/visa-and-emirates-id/types-of-visa/golden-visa"
+      },
+      uk: {
+        cost: { annual: 0, currency: "USD", label: "£2,389+ ILR fee" },
+        difficulty: "moderate",
+        processingDays: "5 years",
+        special: "ILR after 5yr on Skilled Worker. B1 English, Life in UK test. Americans among top 5 nationalities for UK settlement.",
+        visaFee: 2389,
+        officialUrl: "https://www.gov.uk/indefinite-leave-to-remain"
+      },
+      japan: {
+        cost: { annual: 0, currency: "USD", label: "¥8,000 application fee" },
+        difficulty: "hard",
+        processingDays: "10 years (or 3 via HSP)",
+        special: "Standard PR requires 10yr continuous residence. HSP (Highly Skilled Professional) fast-track: PR after 3yr with 70+ points. Americans score well on HSP language points.",
+        visaFee: 80,
+        officialUrl: "https://www.moj.go.jp/isa/applications/status/permanent_resident.html"
+      },
+      portugal: {
+        cost: { annual: 0, currency: "USD", label: "€320+ residence fee" },
+        difficulty: "easy",
+        processingDays: "5 years → PR",
+        special: "D7/D8/D3 visa → 5yr residency → Permanent Residence. Golden Visa (€500K) accelerated. Portuguese B2 language. Americans increasingly choosing Lisbon and Porto.",
+        visaFee: 320,
+        officialUrl: "https://aima.gov.pt/en"
+      },
+      thailand: {
+        cost: { annual: 0, currency: "USD", label: "THB 600,000 Elite / LTR" },
+        difficulty: "hard",
+        processingDays: "No standard PR",
+        special: "No standard PR path. Thailand Elite Visa (THB 600,000) for 5-20yr stays. LTR Wealthy Pensioner requires $80K passive income annually.",
+        visaFee: 10000,
+        officialUrl: "https://www.thailand-elite.com"
+      },
+      newzealand: {
+        cost: { annual: 0, currency: "USD", label: "NZD 3,310 visa fee" },
+        difficulty: "moderate",
+        processingDays: "12~18 months",
+        special: "Skilled Migrant Category points-based. Americans typically strong candidates. 5yr residency → citizenship eligible. Close cultural and language ties.",
+        visaFee: 2610,
+        officialUrl: "https://www.immigration.govt.nz/new-zealand-visas/apply-for-a-visa/about-visa/skilled-migrant-category-resident-visa"
+      },
+      france: {
+        cost: { annual: 0, currency: "USD", label: "€269+ residence fees" },
+        difficulty: "moderate",
+        processingDays: "5 years → Carte de Résident",
+        special: "Carte de Résident after 5yr legal residency. Talent Passport holders may fast-track. French language B1 required. Citizenship possible after 5yr.",
+        visaFee: 269,
+        officialUrl: "https://www.service-public.fr/particuliers/vosdroits/F11429"
+      },
+      netherlands: {
+        cost: { annual: 0, currency: "USD", label: "€183+ IND fee" },
+        difficulty: "moderate",
+        processingDays: "5 years → PR",
+        special: "Permanent Residence after 5yr legal residency. Dutch A2 language required. Integration exam. Dutch citizenship after 5yr PR.",
+        visaFee: 183,
+        officialUrl: "https://ind.nl/en/residence-permits/permanent-residence"
+      },
+      italy: {
+        cost: { annual: 0, currency: "USD", label: "€10.20+ permit fee" },
+        difficulty: "moderate",
+        processingDays: "5 years → EU PR",
+        special: "EU Long-term Residence Permit after 5yr. Italian A2 language test. Income requirement. Bologna, Milan, Rome top destinations for American expats.",
+        visaFee: 10,
+        officialUrl: "https://www.interno.gov.it/it/temi/immigrazione-e-asilo/permesso-di-soggiorno"
+      },
+      spain: {
+        cost: { annual: 0, currency: "USD", label: "€20+ residence card" },
+        difficulty: "moderate",
+        processingDays: "5 years → EU PR",
+        special: "Long-term EU Residency after 5yr. Spanish A2 language test. Income proof required. Barcelona and Málaga have growing American expat communities.",
+        visaFee: 20,
+        officialUrl: "https://www.inclusion.gob.es/web/migraciones/w/residencia-de-larga-duracion-ue"
+      },
+      malaysia: {
+        cost: { annual: 0, currency: "USD", label: "MYR 500K MM2H deposit" },
+        difficulty: "hard",
+        processingDays: "10+ years",
+        special: "PR is discretionary and extremely rare. MM2H (Malaysia My Second Home) practical long-term option: 10yr renewable, MYR 500K fixed deposit required.",
+        visaFee: 5000,
+        officialUrl: "https://mm2h.gov.my"
+      }
+    },
+    travel: {
+      canada: {
+        cost: { annual: 0, currency: "USD", label: "eTA CAD 7" },
+        difficulty: "easy",
+        processingDays: "Minutes (eTA)",
+        special: "eTA only (no full visa). Up to 6 months per stay. NEXUS card for fast border crossing. Canada is the most visited country by Americans.",
+        visaFee: 7,
+        weeklyLiving: 420,
+        flightMinUSD: 250,
+        officialUrl: "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html"
+      },
+      germany: {
+        cost: { annual: 0, currency: "USD", label: "Visa-free 90 days" },
+        difficulty: "easy",
+        processingDays: "Visa-free",
+        special: "US passport → Schengen visa-free 90/180 days. Germany entry = 26 Schengen countries. Berlin, Munich, Frankfurt, Rhine Valley all accessible.",
+        visaFee: 0,
+        weeklyLiving: 350,
+        flightMinUSD: 500,
+        officialUrl: "https://www.schengenvisainfo.com"
+      },
+      australia: {
+        cost: { annual: 0, currency: "USD", label: "eVisitor — Free" },
+        difficulty: "easy",
+        processingDays: "24~48 hours",
+        special: "eVisitor (subclass 651) is FREE for Americans. Online application, approved within 48hr. 12-month multiple entry, 3 months per stay.",
+        visaFee: 0,
+        weeklyLiving: 400,
+        flightMinUSD: 1200,
+        officialUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/evisitor-651"
+      },
+      singapore: {
+        cost: { annual: 0, currency: "USD", label: "Visa-free 30 days" },
+        difficulty: "easy",
+        processingDays: "Visa-free",
+        special: "US passport → 30-day visa-free entry. Strong US-Singapore diplomatic ties. Changi Airport is world-class transit hub.",
+        visaFee: 0,
+        weeklyLiving: 280,
+        flightMinUSD: 900,
+        officialUrl: "https://www.ica.gov.sg"
+      },
+      uae: {
+        cost: { annual: 0, currency: "USD", label: "90-day visa on arrival" },
+        difficulty: "easy",
+        processingDays: "On arrival",
+        special: "Americans receive 90-day visa on arrival at UAE airports. Renewable once. Dubai and Abu Dhabi popular with American tourists.",
+        visaFee: 0,
+        weeklyLiving: 350,
+        flightMinUSD: 800,
+        officialUrl: "https://u.ae/en/information-and-services/visa-and-emirates-id"
+      },
+      uk: {
+        cost: { annual: 0, currency: "USD", label: "ETA £10 required" },
+        difficulty: "easy",
+        processingDays: "24 hours (ETA)",
+        special: "UK ETA required for Americans (introduced 2024). £10 fee. Up to 6 months per visit. London is the #1 destination for US travelers to Europe.",
+        visaFee: 10,
+        weeklyLiving: 500,
+        flightMinUSD: 450,
+        officialUrl: "https://www.gov.uk/guidance/apply-for-an-electronic-travel-authorisation-eta"
+      },
+      japan: {
+        cost: { annual: 0, currency: "USD", label: "Visa-free 90 days" },
+        difficulty: "easy",
+        processingDays: "Visa-free",
+        special: "US passport → 90-day visa-free entry. Multiple entry allowed. Japan is a top destination for American tourists. Tokyo, Kyoto, Osaka easy to navigate in English.",
+        visaFee: 0,
+        weeklyLiving: 250,
+        flightMinUSD: 800,
+        officialUrl: "https://www.mofa.go.jp/j_info/visit/visa/index.html"
+      },
+      portugal: {
+        cost: { annual: 0, currency: "USD", label: "Visa-free 90 days" },
+        difficulty: "easy",
+        processingDays: "Visa-free",
+        special: "US passport → Schengen visa-free 90/180 days. Lisbon and Porto among fastest-growing American expat destinations. Affordable vs. other Western Europe.",
+        visaFee: 0,
+        weeklyLiving: 220,
+        flightMinUSD: 500,
+        officialUrl: "https://www.schengenvisainfo.com/portugal-visa/"
+      },
+      thailand: {
+        cost: { annual: 0, currency: "USD", label: "Visa-free 60 days" },
+        difficulty: "easy",
+        processingDays: "Visa-free",
+        special: "Americans get 60-day visa-free entry (extended 2024). Extendable 30 days at local immigration. Bangkok, Phuket, Chiang Mai all popular.",
+        visaFee: 0,
+        weeklyLiving: 150,
+        flightMinUSD: 900,
+        officialUrl: "https://www.thaiembassy.com/thailand/thailand-visa-exemption.php"
+      },
+      newzealand: {
+        cost: { annual: 0, currency: "USD", label: "NZeTA NZD 23" },
+        difficulty: "easy",
+        processingDays: "Minutes (NZeTA)",
+        special: "NZeTA online in minutes. 90-day entry per visit. IVL tourism levy NZD 35. New Zealand is a top adventure travel destination for Americans.",
+        visaFee: 23,
+        weeklyLiving: 300,
+        flightMinUSD: 1200,
+        officialUrl: "https://www.immigration.govt.nz/new-zealand-visas/apply-for-a-visa/about-visa/nzeta"
+      },
+      france: {
+        cost: { annual: 0, currency: "USD", label: "Visa-free 90 days" },
+        difficulty: "easy",
+        processingDays: "Visa-free",
+        special: "US passport → Schengen visa-free 90/180 days. France is the world's most visited country. Paris, French Riviera, Loire Valley, Bordeaux all accessible.",
+        visaFee: 0,
+        weeklyLiving: 300,
+        flightMinUSD: 450,
+        officialUrl: "https://www.schengenvisainfo.com/france-visa/"
+      },
+      netherlands: {
+        cost: { annual: 0, currency: "USD", label: "Visa-free 90 days" },
+        difficulty: "easy",
+        processingDays: "Visa-free",
+        special: "Schengen visa-free. Amsterdam, The Hague, Rotterdam, Maastricht popular with Americans. Tulip season and world-class museums draw millions annually.",
+        visaFee: 0,
+        weeklyLiving: 320,
+        flightMinUSD: 450,
+        officialUrl: "https://www.schengenvisainfo.com/netherlands-visa/"
+      },
+      italy: {
+        cost: { annual: 0, currency: "USD", label: "Visa-free 90 days" },
+        difficulty: "easy",
+        processingDays: "Visa-free",
+        special: "Schengen visa-free. Italy among top 5 destinations for American tourists. Rome, Venice, Amalfi, Tuscany. Direct flights from major US cities.",
+        visaFee: 0,
+        weeklyLiving: 250,
+        flightMinUSD: 450,
+        officialUrl: "https://www.schengenvisainfo.com/italy-visa/"
+      },
+      spain: {
+        cost: { annual: 0, currency: "USD", label: "Visa-free 90 days" },
+        difficulty: "easy",
+        processingDays: "Visa-free",
+        special: "Schengen visa-free. Barcelona, Madrid, Seville, Ibiza all accessible. Americans love Spain for food, culture, and architecture.",
+        visaFee: 0,
+        weeklyLiving: 220,
+        flightMinUSD: 450,
+        officialUrl: "https://www.schengenvisainfo.com/spain-visa/"
+      },
+      malaysia: {
+        cost: { annual: 0, currency: "USD", label: "Visa-free 90 days" },
+        difficulty: "easy",
+        processingDays: "Visa-free",
+        special: "Americans get 90-day visa-free entry to Malaysia. One of Asia's most accessible and affordable destinations. Kuala Lumpur skyline and Borneo rainforest both popular.",
+        visaFee: 0,
+        weeklyLiving: 100,
+        flightMinUSD: 900,
+        officialUrl: "https://www.imi.gov.my/index.php/en/main-services/visa/visa-exemption.html"
+      }
+    }
+  },
+  france: {
+    study: {
+      canada: {
+        cost: { annual: 28000, currency: "USD", label: "CAD 28K~40K/yr" },
+        difficulty: "easy",
+        processingDays: "8~12 weeks",
+        special: "Study Permit straightforward for French nationals. Quebec French-language stream gives competitive advantage. PGWP 3yr post-study work. IEC Working Holiday available.",
+        visaFee: 150,
+        officialUrl: "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada.html"
+      },
+      germany: {
+        cost: { annual: 5000, currency: "USD", label: "€500~1,200/yr (EU rate)" },
+        difficulty: "easy",
+        processingDays: "No visa — EU freedom of movement",
+        special: "EU citizen — no visa needed in Germany. Study immediately under EU Freedom of Movement. Register at Einwohnermeldeamt within 2 weeks. Public universities free or near-free for EU citizens.",
+        visaFee: 0,
+        officialUrl: "https://www.daad.de/en/study-and-research-in-germany/"
+      },
+      australia: {
+        cost: { annual: 32000, currency: "USD", label: "AUD 30K~45K/yr" },
+        difficulty: "easy",
+        processingDays: "14~21 days",
+        special: "Student visa 500. French nationals eligible for Working Holiday (417) which allows incidental study. 2yr Graduate visa post-study available.",
+        visaFee: 710,
+        officialUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500"
+      },
+      singapore: {
+        cost: { annual: 22000, currency: "USD", label: "SGD 20K~30K/yr" },
+        difficulty: "easy",
+        processingDays: "14~28 days",
+        special: "Student Pass via ICA. NUS and NTU well-known in France. INSEAD Singapore campus popular for MBA candidates. Strong English instruction.",
+        visaFee: 30,
+        officialUrl: "https://www.ica.gov.sg/reside/STP/apply"
+      },
+      uae: {
+        cost: { annual: 18000, currency: "USD", label: "AED 50K~80K/yr" },
+        difficulty: "easy",
+        processingDays: "7 days",
+        special: "Student visa via university enrollment. MBZUAI has French research partnerships. No income tax. Popular destination for French engineering graduates.",
+        visaFee: 270,
+        officialUrl: "https://u.ae/en/information-and-services/visa-and-emirates-id/types-of-visa/student-visa"
+      },
+      uk: {
+        cost: { annual: 35000, currency: "USD", label: "£20K~35K/yr" },
+        difficulty: "moderate",
+        processingDays: "3 weeks",
+        special: "Post-Brexit: French nationals now need UK Student visa same as non-EU. IHS fee £776/yr. 2yr Graduate visa after. Oxford, Imperial, LSE popular with French students.",
+        visaFee: 490,
+        officialUrl: "https://www.gov.uk/student-visa"
+      },
+      japan: {
+        cost: { annual: 12000, currency: "USD", label: "¥1.2M~2M/yr" },
+        difficulty: "moderate",
+        processingDays: "3~5 days (after CoE: 3 months)",
+        special: "CoE from school takes 3 months. French-Japanese cultural ties strong. PVT Working Holiday also available. French students at Kyoto and Waseda increasing.",
+        visaFee: 30,
+        officialUrl: "https://www.moj.go.jp/isa/applications/status/student.html"
+      },
+      portugal: {
+        cost: { annual: 5000, currency: "USD", label: "€500~1,200/yr (EU rate)" },
+        difficulty: "easy",
+        processingDays: "No visa — EU freedom of movement",
+        special: "EU citizen — no visa needed. Full tuition EU rates at Portuguese public universities. Lisbon and Porto very popular with French expats. Language closely related.",
+        visaFee: 0,
+        officialUrl: "https://www.dges.gov.pt/en"
+      },
+      usa: {
+        cost: { annual: 50000, currency: "USD", label: "$40K~60K/yr" },
+        difficulty: "moderate",
+        processingDays: "30~60 days",
+        special: "F-1 visa + SEVIS fee. Campus interview at US Embassy Paris. OPT 1yr + STEM OPT 2yr. French students well-represented at MIT, Columbia, and NYU.",
+        visaFee: 510,
+        officialUrl: "https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html"
+      },
+      thailand: {
+        cost: { annual: 5000, currency: "USD", label: "฿120K~200K/yr" },
+        difficulty: "easy",
+        processingDays: "7 days",
+        special: "ED visa. Many French schools partner with Thai institutions. Low cost of living. French expat community in Bangkok and Chiang Mai helps with integration.",
+        visaFee: 40,
+        officialUrl: "https://www.immigration.go.th"
+      },
+      newzealand: {
+        cost: { annual: 25000, currency: "USD", label: "NZD 25K~40K/yr" },
+        difficulty: "easy",
+        processingDays: "14 days",
+        special: "Student visa easy for French nationals. PVT Working Holiday available. Post-study work visa 3yr. Auckland popular with French students.",
+        visaFee: 330,
+        officialUrl: "https://www.immigration.govt.nz"
+      },
+      netherlands: {
+        cost: { annual: 5000, currency: "USD", label: "€2K~4K/yr (EU rate)" },
+        difficulty: "easy",
+        processingDays: "No visa — EU freedom of movement",
+        special: "EU citizen — no visa needed. Public university EU rates. Orientation year after graduation. TU Delft and Leiden popular. English widely spoken.",
+        visaFee: 0,
+        officialUrl: "https://www.nuffic.nl/en"
+      },
+      italy: {
+        cost: { annual: 5000, currency: "USD", label: "€900~3K/yr (EU rate)" },
+        difficulty: "easy",
+        processingDays: "No visa — EU freedom of movement",
+        special: "EU citizen — no visa needed. Milan Polytechnic, Bologna, Sapienza popular for French Erasmus and long-term students. EU tuition rates apply.",
+        visaFee: 0,
+        officialUrl: "https://www.studiare-in-italia.it"
+      },
+      spain: {
+        cost: { annual: 5000, currency: "USD", label: "€800~2K/yr (EU rate)" },
+        difficulty: "easy",
+        processingDays: "No visa — EU freedom of movement",
+        special: "EU citizen — no visa needed. Spanish public universities charge EU rates. Barcelona and Madrid popular. Erasmus Programme widely used by French students.",
+        visaFee: 0,
+        officialUrl: "https://www.educacion.gob.es/en"
+      },
+      malaysia: {
+        cost: { annual: 8000, currency: "USD", label: "MYR 25K~45K/yr" },
+        difficulty: "easy",
+        processingDays: "7~14 days",
+        special: "Student Pass via EMGS. Some French schools operate campuses in KL. English-medium instruction. Affordable vs. Western options. French expat community present.",
+        visaFee: 110,
+        officialUrl: "https://educationmalaysia.gov.my"
+      }
+    },
+    work: {
+      canada: {
+        cost: { annual: 3500, currency: "USD", label: "CAD 1,050 permit fee" },
+        difficulty: "easy",
+        processingDays: "2 weeks (IEC) / 6~12 months (Express Entry)",
+        special: "IEC Working Holiday for French under 35: open work permit, no job offer needed. Francophone bonus points in Express Entry. Quebec Skilled Worker fast-track for French speakers.",
+        visaFee: 1050,
+        officialUrl: "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html"
+      },
+      germany: {
+        cost: { annual: 0, currency: "USD", label: "EU Freedom of Movement" },
+        difficulty: "easy",
+        processingDays: "No wait — EU right",
+        special: "EU citizen — work anywhere in Germany immediately. Register EU citizenship (Freizügigkeitsbescheinigung). No work permit needed. Strong demand for French speakers.",
+        visaFee: 0,
+        officialUrl: "https://www.make-it-in-germany.com/en/living-in-germany/moving-to-germany/eu-eea-nationals"
+      },
+      australia: {
+        cost: { annual: 635, currency: "USD", label: "AUD 635 WHV fee" },
+        difficulty: "easy",
+        processingDays: "14~28 days",
+        special: "Working Holiday (417) for French under 35. Can extend to 3 years. TSS 482 for employer-sponsored longer term. French professionals in-demand in hospitality and tech.",
+        visaFee: 635,
+        officialUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417"
+      },
+      singapore: {
+        cost: { annual: 1200, currency: "USD", label: "SGD 105 EP fee" },
+        difficulty: "moderate",
+        processingDays: "3~8 weeks",
+        special: "Employment Pass requires SGD 5,000+/month. French MNCs (TotalEnergies, AXA, L'Oréal) sponsor employees to Singapore. Employer applies via MyMOM.",
+        visaFee: 105,
+        officialUrl: "https://www.mom.gov.sg/passes-and-permits/employment-pass"
+      },
+      uae: {
+        cost: { annual: 1500, currency: "USD", label: "AED 500~2,000 fees" },
+        difficulty: "easy",
+        processingDays: "2~4 weeks",
+        special: "French professionals recruited in engineering, finance, luxury, and education sectors. French community ~60,000 in UAE. Golden Visa for high earners.",
+        visaFee: 500,
+        officialUrl: "https://u.ae/en/information-and-services/visa-and-emirates-id/types-of-visa/employment-visa"
+      },
+      uk: {
+        cost: { annual: 1500, currency: "USD", label: "£239 visa fee" },
+        difficulty: "moderate",
+        processingDays: "3~8 weeks",
+        special: "Post-Brexit: French nationals need Skilled Worker visa for UK work. Certificate of Sponsorship required. Youth Mobility Scheme (YMS) available for French under 30.",
+        visaFee: 239,
+        officialUrl: "https://www.gov.uk/skilled-worker-visa"
+      },
+      japan: {
+        cost: { annual: 2000, currency: "USD", label: "¥3,000 visa fee" },
+        difficulty: "moderate",
+        processingDays: "1~3 months",
+        special: "Engineer/Specialist or Cultural Activities visa. PVT Working Holiday for French under 30. French cultural institutes recruit French nationals. HSP route for high skilled.",
+        visaFee: 20,
+        officialUrl: "https://www.moj.go.jp/isa/applications/status/engineer.html"
+      },
+      portugal: {
+        cost: { annual: 0, currency: "USD", label: "EU Freedom of Movement" },
+        difficulty: "easy",
+        processingDays: "No wait — EU right",
+        special: "EU citizen — work anywhere in Portugal immediately. Register residency at local council. Large and growing French expat community in Lisbon and Algarve.",
+        visaFee: 0,
+        officialUrl: "https://aima.gov.pt/en"
+      },
+      usa: {
+        cost: { annual: 5000, currency: "USD", label: "H-1B: $1,710+ fees" },
+        difficulty: "hard",
+        processingDays: "6~9 months",
+        special: "H-1B cap lottery (85,000 spots). Employer must sponsor. L-1 intracompany transfer easier if already in a US multinational. E-3 visa not available for French.",
+        visaFee: 1710,
+        officialUrl: "https://www.dol.gov/agencies/eta/foreign-labor/programs/h-1b"
+      },
+      thailand: {
+        cost: { annual: 2000, currency: "USD", label: "฿2,000 Non-B + permit" },
+        difficulty: "moderate",
+        processingDays: "3~4 weeks",
+        special: "Non-B + work permit required. French companies (Michelin, Airbus Thailand) sponsor employees. LTR Visa for high-income professionals. Active French community in Bangkok.",
+        visaFee: 80,
+        officialUrl: "https://www.dbd.go.th/en"
+      },
+      newzealand: {
+        cost: { annual: 700, currency: "USD", label: "NZD 700 AEWV fee" },
+        difficulty: "easy",
+        processingDays: "14~28 days",
+        special: "Working Holiday (PVT) allows 23 months work+travel. AEWV for accredited employer roles. French professionals in-demand in tech, agriculture, and hospitality.",
+        visaFee: 470,
+        officialUrl: "https://www.immigration.govt.nz/new-zealand-visas/apply-for-a-visa/about-visa/accredited-employer-work-visa"
+      },
+      netherlands: {
+        cost: { annual: 0, currency: "USD", label: "EU Freedom of Movement" },
+        difficulty: "easy",
+        processingDays: "No wait — EU right",
+        special: "EU citizen — work in Netherlands immediately. Register with municipality. ASML, Booking, Shell hire many French speakers. 30% tax ruling available for qualifying roles.",
+        visaFee: 0,
+        officialUrl: "https://ind.nl/en/eu-eea-or-swiss-national"
+      },
+      italy: {
+        cost: { annual: 0, currency: "USD", label: "EU Freedom of Movement" },
+        difficulty: "easy",
+        processingDays: "No wait — EU right",
+        special: "EU citizen — work in Italy immediately. Register as EU citizen within 3 months. Milan luxury fashion and design sector hires many French professionals.",
+        visaFee: 0,
+        officialUrl: "https://www.lavoro.gov.it/en"
+      },
+      spain: {
+        cost: { annual: 0, currency: "USD", label: "EU Freedom of Movement" },
+        difficulty: "easy",
+        processingDays: "No wait — EU right",
+        special: "EU citizen — work in Spain immediately. NIE number required for tax/admin. Barcelona tech sector and Madrid finance draw many French workers.",
+        visaFee: 0,
+        officialUrl: "https://www.sepe.es/HomeSepe/en"
+      },
+      malaysia: {
+        cost: { annual: 1000, currency: "USD", label: "MYR 1,500 EP fee" },
+        difficulty: "moderate",
+        processingDays: "2~4 weeks",
+        special: "Employment Pass Tier 1 for salary RM 10,000+. French companies (Airbus, Schneider) recruit locally. English working environment in MNCs.",
+        visaFee: 330,
+        officialUrl: "https://www.esd.imi.gov.my"
+      }
+    },
+    immigration: {
+      canada: {
+        cost: { annual: 0, currency: "USD", label: "CAD 1,325~2,140 fees" },
+        difficulty: "moderate",
+        processingDays: "6~12 months",
+        special: "Express Entry: French speakers receive Francophone bonus — French citizens almost guaranteed extra 50 CRS points. Quebec skilled worker PNP stream very fast for French speakers.",
+        visaFee: 1325,
+        officialUrl: "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html"
+      },
+      germany: {
+        cost: { annual: 0, currency: "USD", label: "EU right — no fees" },
+        difficulty: "easy",
+        processingDays: "No wait — EU right",
+        special: "EU citizen — permanent right of residence after 5yr. No formal PR application needed — just register. Fastest PR path for French nationals in Europe.",
+        visaFee: 0,
+        officialUrl: "https://www.make-it-in-germany.com/en/living-in-germany/moving-to-germany/eu-eea-nationals"
+      },
+      australia: {
+        cost: { annual: 0, currency: "USD", label: "AUD 4,195 visa fee" },
+        difficulty: "moderate",
+        processingDays: "12~24 months",
+        special: "189/190 skilled migration points-based. French nationals score well: English, education, experience. Australia highly desirable for French emigrants.",
+        visaFee: 4115,
+        officialUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-independent-189"
+      },
+      singapore: {
+        cost: { annual: 0, currency: "USD", label: "Varies" },
+        difficulty: "hard",
+        processingDays: "2~5 years",
+        special: "PR highly discretionary. French nationals with strong employment history and community ties have reasonable chances. Must demonstrate long-term commitment to Singapore.",
+        visaFee: 100,
+        officialUrl: "https://www.ica.gov.sg/PR"
+      },
+      uae: {
+        cost: { annual: 0, currency: "USD", label: "AED 2,800~10,000" },
+        difficulty: "easy",
+        processingDays: "1~2 years",
+        special: "Golden Visa (10yr) for salary AED 30K+/month or investment. France is among top source countries for UAE Golden Visa holders. Popular among French executives.",
+        visaFee: 2800,
+        officialUrl: "https://u.ae/en/information-and-services/visa-and-emirates-id/types-of-visa/golden-visa"
+      },
+      uk: {
+        cost: { annual: 0, currency: "USD", label: "£2,389+ ILR fee" },
+        difficulty: "moderate",
+        processingDays: "5 years",
+        special: "ILR after 5yr Skilled Worker. B1 English, Life in UK test. French community ~150,000 in London area. Post-Brexit increased admin for French nationals.",
+        visaFee: 2389,
+        officialUrl: "https://www.gov.uk/indefinite-leave-to-remain"
+      },
+      japan: {
+        cost: { annual: 0, currency: "USD", label: "¥8,000 application fee" },
+        difficulty: "hard",
+        processingDays: "10 years (or 3 via HSP)",
+        special: "Standard PR 10yr. HSP fast-track 3yr with 70+ points. French-Japanese cultural ties (Alliance Française) help with integration. Language B1+ required.",
+        visaFee: 80,
+        officialUrl: "https://www.moj.go.jp/isa/applications/status/permanent_resident.html"
+      },
+      portugal: {
+        cost: { annual: 0, currency: "USD", label: "EU right — minimal fees" },
+        difficulty: "easy",
+        processingDays: "No wait — EU right",
+        special: "EU citizen — automatic permanent residence right after 5yr. No formal PR needed. Golden Visa accelerated for investments. Portugal is the most popular EU destination for French emigrants.",
+        visaFee: 0,
+        officialUrl: "https://aima.gov.pt/en"
+      },
+      usa: {
+        cost: { annual: 0, currency: "USD", label: "DV Lottery or EB petition" },
+        difficulty: "hard",
+        processingDays: "3~10+ years",
+        special: "Green Card via employer EB-1/EB-2/EB-3 (1-5yr) or Diversity Visa Lottery (French eligible). Investment EB-5 ($800K) faster. France popular origin for US Green Card applicants.",
+        visaFee: 325,
+        officialUrl: "https://www.uscis.gov/green-card"
+      },
+      thailand: {
+        cost: { annual: 0, currency: "USD", label: "THB 600,000 Elite / LTR" },
+        difficulty: "hard",
+        processingDays: "No standard PR",
+        special: "No standard PR. Thailand Elite Visa (THB 600,000) for long stays. LTR Wealthy Pensioner requires $80K income. Large French expat retiree community in Chiang Mai.",
+        visaFee: 10000,
+        officialUrl: "https://www.thailand-elite.com"
+      },
+      newzealand: {
+        cost: { annual: 0, currency: "USD", label: "NZD 3,310 visa fee" },
+        difficulty: "moderate",
+        processingDays: "12~18 months",
+        special: "Skilled Migrant points-based. French professionals strong candidates. 5yr residency → citizenship. Pacific lifestyle attractive to French emigrants.",
+        visaFee: 2610,
+        officialUrl: "https://www.immigration.govt.nz/new-zealand-visas/apply-for-a-visa/about-visa/skilled-migrant-category-resident-visa"
+      },
+      netherlands: {
+        cost: { annual: 0, currency: "USD", label: "EU right — minimal fees" },
+        difficulty: "easy",
+        processingDays: "No wait — EU right",
+        special: "EU citizen — automatic permanent right after 5yr. Amsterdam and Rotterdam attract French professionals, especially in tech, finance, and logistics.",
+        visaFee: 0,
+        officialUrl: "https://ind.nl/en/eu-eea-or-swiss-national"
+      },
+      italy: {
+        cost: { annual: 0, currency: "USD", label: "EU right — minimal fees" },
+        difficulty: "easy",
+        processingDays: "No wait — EU right",
+        special: "EU citizen — automatic permanent right after 5yr. Milan, Turin, and Rome all have French communities. French-Italian cultural affinity eases integration.",
+        visaFee: 0,
+        officialUrl: "https://www.interno.gov.it/en"
+      },
+      spain: {
+        cost: { annual: 0, currency: "USD", label: "EU right — minimal fees" },
+        difficulty: "easy",
+        processingDays: "No wait — EU right",
+        special: "EU citizen — automatic permanent right after 5yr. Barcelona and Madrid have the largest French communities in Spain. Lifestyle and climate are major draws.",
+        visaFee: 0,
+        officialUrl: "https://www.interior.gob.es/en"
+      },
+      malaysia: {
+        cost: { annual: 0, currency: "USD", label: "MYR 500K MM2H deposit" },
+        difficulty: "hard",
+        processingDays: "10+ years",
+        special: "PR is discretionary and rare. MM2H (10yr renewable) practical option: MYR 500K fixed deposit. French community ~3,000 in Malaysia, mainly in KL.",
+        visaFee: 5000,
+        officialUrl: "https://mm2h.gov.my"
+      }
+    },
+    travel: {
+      canada: {
+        cost: { annual: 0, currency: "USD", label: "eTA CAD 7" },
+        difficulty: "easy",
+        processingDays: "Minutes (eTA)",
+        special: "French passport → eTA only. Up to 6 months per stay. Quebec very popular with French tourists for cultural and linguistic connection. 8hr flight from Paris.",
+        visaFee: 7,
+        weeklyLiving: 420,
+        flightMinUSD: 650,
+        officialUrl: "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html"
+      },
+      germany: {
+        cost: { annual: 0, currency: "USD", label: "EU — no restrictions" },
+        difficulty: "easy",
+        processingDays: "No visa — EU FoM",
+        special: "EU citizen — no restrictions on travel. Drive, take train (TGV), or fly. Berlin, Munich, Hamburg, Rhine Valley all accessible without any limit.",
+        visaFee: 0,
+        weeklyLiving: 350,
+        flightMinUSD: 50,
+        officialUrl: "https://www.einreisebestimmungen.de/en"
+      },
+      australia: {
+        cost: { annual: 0, currency: "USD", label: "ETA AUD 20" },
+        difficulty: "easy",
+        processingDays: "Instant (ETA)",
+        special: "French passport → ETA (subclass 601). Instant approval. 12-month multiple entry. Barrier Reef and Melbourne popular with French tourists.",
+        visaFee: 20,
+        weeklyLiving: 400,
+        flightMinUSD: 900,
+        officialUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/electronic-travel-authority-601"
+      },
+      singapore: {
+        cost: { annual: 0, currency: "USD", label: "Visa-free 30 days" },
+        difficulty: "easy",
+        processingDays: "Visa-free",
+        special: "French passport → 30-day visa-free entry. Singapore is key transit hub for French travelers heading to Southeast Asia and Oceania.",
+        visaFee: 0,
+        weeklyLiving: 280,
+        flightMinUSD: 700,
+        officialUrl: "https://www.ica.gov.sg"
+      },
+      uae: {
+        cost: { annual: 0, currency: "USD", label: "90-day visa on arrival" },
+        difficulty: "easy",
+        processingDays: "On arrival",
+        special: "French passport → 90-day visa on arrival at UAE airports. Dubai is a popular luxury destination for French tourists. Direct Air France flights daily from Paris.",
+        visaFee: 0,
+        weeklyLiving: 350,
+        flightMinUSD: 250,
+        officialUrl: "https://u.ae/en/information-and-services/visa-and-emirates-id"
+      },
+      uk: {
+        cost: { annual: 0, currency: "USD", label: "ETA £10 required" },
+        difficulty: "easy",
+        processingDays: "24 hours (ETA)",
+        special: "UK ETA required for French (post-Brexit, 2024). £10, valid 2yr. Up to 6 months per visit. London top destination for French tourists. Eurostar 2hr 15min Paris-London.",
+        visaFee: 10,
+        weeklyLiving: 500,
+        flightMinUSD: 50,
+        officialUrl: "https://www.gov.uk/guidance/apply-for-an-electronic-travel-authorisation-eta"
+      },
+      japan: {
+        cost: { annual: 0, currency: "USD", label: "Visa-free 90 days" },
+        difficulty: "easy",
+        processingDays: "Visa-free",
+        special: "French passport → 90-day visa-free. Japan very popular with French tourists (Japonisme cultural affinity). Tokyo, Kyoto, Osaka. Direct Air France Paris-Tokyo.",
+        visaFee: 0,
+        weeklyLiving: 250,
+        flightMinUSD: 600,
+        officialUrl: "https://www.mofa.go.jp/j_info/visit/visa/index.html"
+      },
+      portugal: {
+        cost: { annual: 0, currency: "USD", label: "EU — no restrictions" },
+        difficulty: "easy",
+        processingDays: "No visa — EU FoM",
+        special: "EU citizen — drive or fly, no limit. Lisbon 2hr from Paris by plane. Porto, Algarve, Madeira. Portugal top destination for French tourists and emigrants.",
+        visaFee: 0,
+        weeklyLiving: 220,
+        flightMinUSD: 80,
+        officialUrl: "https://www.visitportugal.com"
+      },
+      usa: {
+        cost: { annual: 0, currency: "USD", label: "ESTA $21" },
+        difficulty: "easy",
+        processingDays: "Minutes (ESTA)",
+        special: "ESTA Visa Waiver: 90-day visa-free entry. New York, Los Angeles, Miami, Chicago. Direct Air France and Delta flights. France sends ~2M tourists/year to USA.",
+        visaFee: 21,
+        weeklyLiving: 350,
+        flightMinUSD: 350,
+        officialUrl: "https://esta.cbp.dhs.gov"
+      },
+      thailand: {
+        cost: { annual: 0, currency: "USD", label: "Visa-free 60 days" },
+        difficulty: "easy",
+        processingDays: "Visa-free",
+        special: "French passport → 60-day visa-free. Extendable 30 days. Thailand popular with French backpackers and retirees. Koh Samui, Phuket, Chiang Mai are favorites.",
+        visaFee: 0,
+        weeklyLiving: 150,
+        flightMinUSD: 600,
+        officialUrl: "https://www.thaiembassy.com/thailand/thailand-visa-exemption.php"
+      },
+      newzealand: {
+        cost: { annual: 0, currency: "USD", label: "NZeTA NZD 23" },
+        difficulty: "easy",
+        processingDays: "Minutes (NZeTA)",
+        special: "French passport → NZeTA in minutes. 90-day entry. Hobbiton, Milford Sound, Queenstown. PVT Working Holiday also very popular with French travelers.",
+        visaFee: 23,
+        weeklyLiving: 300,
+        flightMinUSD: 1200,
+        officialUrl: "https://www.immigration.govt.nz/new-zealand-visas/apply-for-a-visa/about-visa/nzeta"
+      },
+      netherlands: {
+        cost: { annual: 0, currency: "USD", label: "EU — no restrictions" },
+        difficulty: "easy",
+        processingDays: "No visa — EU FoM",
+        special: "EU citizen — 1hr flight or 3hr train from Paris. Amsterdam, Rotterdam, The Hague. No 90-day limit for EU citizens. Key EU neighbor for French travelers.",
+        visaFee: 0,
+        weeklyLiving: 320,
+        flightMinUSD: 50,
+        officialUrl: "https://www.netherlands-tourism.com"
+      },
+      italy: {
+        cost: { annual: 0, currency: "USD", label: "EU — no restrictions" },
+        difficulty: "easy",
+        processingDays: "No visa — EU FoM",
+        special: "EU citizen — drive through Alps or fly. Rome 2hr from Paris by plane. No restrictions. Italy is the #1 EU destination for French tourists by volume.",
+        visaFee: 0,
+        weeklyLiving: 250,
+        flightMinUSD: 80,
+        officialUrl: "https://www.italia.it/en"
+      },
+      spain: {
+        cost: { annual: 0, currency: "USD", label: "EU — no restrictions" },
+        difficulty: "easy",
+        processingDays: "No visa — EU FoM",
+        special: "EU citizen — drive through Pyrenees or fly. Barcelona 6hr train from Paris. No restrictions. Spain is the largest foreign destination for French tourists by numbers.",
+        visaFee: 0,
+        weeklyLiving: 220,
+        flightMinUSD: 80,
+        officialUrl: "https://www.spain.info/en"
+      },
+      malaysia: {
+        cost: { annual: 0, currency: "USD", label: "Visa-free 90 days" },
+        difficulty: "easy",
+        processingDays: "Visa-free",
+        special: "French passport → 90-day visa-free. KL, Penang, Langkawi, Borneo. Air France via hub or direct connections. Affordable and diverse destination.",
+        visaFee: 0,
+        weeklyLiving: 100,
+        flightMinUSD: 650,
+        officialUrl: "https://www.imi.gov.my/index.php/en/main-services/visa/visa-exemption.html"
+      }
+    }
+  },
+  tunisia: {
+    study: {
+      canada: {
+        cost: { annual: 25000, currency: "USD", label: "CAD 28K~40K/yr" },
+        difficulty: "moderate",
+        processingDays: "8~16 weeks",
+        special: "Canadian Study Permit requires proof of funds (CAD 20,635 + tuition), IELTS/TEF, acceptance letter. French-language Quebec programs have easier path. Strong financial documentation essential.",
+        visaFee: 150,
+        officialUrl: "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada.html"
+      },
+      germany: {
+        cost: { annual: 10000, currency: "USD", label: "€8K~12K/yr" },
+        difficulty: "moderate",
+        processingDays: "120~180 days",
+        special: "Studienkolleg preparatory course may be required. DAAD scholarships available. Blocked account €11,904. Appointment bottleneck at German consulate Tunis — apply early.",
+        visaFee: 75,
+        officialUrl: "https://www.make-it-in-germany.com/en/study-training/study/studying-in-germany"
+      },
+      australia: {
+        cost: { annual: 32000, currency: "USD", label: "AUD 30K~45K/yr" },
+        difficulty: "hard",
+        processingDays: "30~60 days",
+        special: "GTE (Genuine Temporary Entrant) statement critical. Strong ties-to-Tunisia evidence required. Refusal rates higher for Tunisian applicants — must demonstrate compelling reason to return.",
+        visaFee: 710,
+        officialUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500"
+      },
+      singapore: {
+        cost: { annual: 22000, currency: "USD", label: "SGD 20K~30K/yr" },
+        difficulty: "hard",
+        processingDays: "14~28 days",
+        special: "Student Pass via ICA. Tunisian applicants face close scrutiny. Strong financial evidence, parental support documentation, and clear academic track required.",
+        visaFee: 30,
+        officialUrl: "https://www.ica.gov.sg/reside/STP/apply"
+      },
+      uae: {
+        cost: { annual: 18000, currency: "USD", label: "AED 50K~80K/yr" },
+        difficulty: "easy",
+        processingDays: "7 days",
+        special: "UAE has large Tunisian community. MBZUAI and AUS welcome North African students. Student visa via enrollment. Arabic language shared advantage.",
+        visaFee: 270,
+        officialUrl: "https://u.ae/en/information-and-services/visa-and-emirates-id/types-of-visa/student-visa"
+      },
+      uk: {
+        cost: { annual: 35000, currency: "USD", label: "£20K~35K/yr" },
+        difficulty: "hard",
+        processingDays: "3~8 weeks",
+        special: "UK Student visa. Higher refusal rates for some North African passports. Strong bank statements (3-6 months), IELTS 5.5+, accommodation proof, and non-immigrant intent required.",
+        visaFee: 490,
+        officialUrl: "https://www.gov.uk/student-visa"
+      },
+      japan: {
+        cost: { annual: 12000, currency: "USD", label: "¥1.2M~2M/yr" },
+        difficulty: "hard",
+        processingDays: "3~5 days (after CoE: 3 months)",
+        special: "Rare pathway for Tunisian students. CoE from school takes 3 months. JLPT N4+ or English proficiency required. High documentation burden.",
+        visaFee: 30,
+        officialUrl: "https://www.moj.go.jp/isa/applications/status/student.html"
+      },
+      portugal: {
+        cost: { annual: 9000, currency: "USD", label: "€7K~12K/yr" },
+        difficulty: "moderate",
+        processingDays: "30~60 days",
+        special: "D4 student visa. Portugal has more accommodating processes for North African students. French language competency often shared. Public universities affordable.",
+        visaFee: 90,
+        officialUrl: "https://aima.gov.pt/en"
+      },
+      usa: {
+        cost: { annual: 50000, currency: "USD", label: "$40K~60K/yr" },
+        difficulty: "hard",
+        processingDays: "2~6 months",
+        special: "F-1 visa requires US Embassy interview in Tunis. Must prove non-immigrant intent strongly. TOEFL/IELTS required. Full financial proof. Apply 6+ months in advance.",
+        visaFee: 510,
+        officialUrl: "https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html"
+      },
+      thailand: {
+        cost: { annual: 5000, currency: "USD", label: "฿120K~200K/yr" },
+        difficulty: "easy",
+        processingDays: "7~14 days",
+        special: "Thai ED visa relatively easy for Tunisians. Low scrutiny. Low cost of living. English-taught programs at MUIC and Mahidol International.",
+        visaFee: 40,
+        officialUrl: "https://www.immigration.go.th"
+      },
+      newzealand: {
+        cost: { annual: 25000, currency: "USD", label: "NZD 25K~40K/yr" },
+        difficulty: "moderate",
+        processingDays: "20~35 days",
+        special: "Student visa possible for Tunisians. Financial evidence and IELTS required. Clear academic purpose and return ties to Tunisia strengthen application.",
+        visaFee: 330,
+        officialUrl: "https://www.immigration.govt.nz"
+      },
+      france: {
+        cost: { annual: 12000, currency: "USD", label: "€8K~15K/yr" },
+        difficulty: "moderate",
+        processingDays: "15~30 days",
+        special: "Very large Tunisian student community in France (~600,000 Tunisian diaspora total). Campus France procedure mandatory. French language proficiency major advantage. Documents must be apostilled.",
+        visaFee: 99,
+        officialUrl: "https://www.campusfrance.org/en"
+      },
+      netherlands: {
+        cost: { annual: 18000, currency: "USD", label: "€12K~20K/yr" },
+        difficulty: "hard",
+        processingDays: "30~60 days",
+        special: "IND strict for Tunisian applicants. Full financial evidence package mandatory. Must apply from Tunisia. University acceptance letter and insurance required.",
+        visaFee: 207,
+        officialUrl: "https://www.nuffic.nl/en"
+      },
+      italy: {
+        cost: { annual: 8000, currency: "USD", label: "€5K~15K/yr" },
+        difficulty: "moderate",
+        processingDays: "15~30 days",
+        special: "Strong historical Tunisian community in Italy (Sicily, Turin). Italian consulate in Tunis familiar with North African applicants. Public universities affordable. Permesso di soggiorno required on arrival.",
+        visaFee: 116,
+        officialUrl: "https://www.studiare-in-italia.it"
+      },
+      spain: {
+        cost: { annual: 10000, currency: "USD", label: "€8K~14K/yr" },
+        difficulty: "moderate",
+        processingDays: "15~30 days",
+        special: "National D student visa. Spanish consulate in Tunis processes applications. Public universities from €800/yr. Growing Tunisian community in Valencia and Madrid.",
+        visaFee: 80,
+        officialUrl: "https://www.studyinspain.info"
+      },
+      malaysia: {
+        cost: { annual: 8000, currency: "USD", label: "MYR 25K~45K/yr" },
+        difficulty: "easy",
+        processingDays: "7~14 days",
+        special: "EMGS system. Tunisian students welcomed as OIC member. Low cost. English-medium instruction at private universities. Halal environment familiar.",
+        visaFee: 110,
+        officialUrl: "https://educationmalaysia.gov.my"
+      }
+    },
+    work: {
+      canada: {
+        cost: { annual: 3500, currency: "USD", label: "CAD 1,050 fees" },
+        difficulty: "hard",
+        processingDays: "2~6 months",
+        special: "LMIA-backed work permit required. Francophone Tunisians can apply via Quebec MOI or Francophone Mobility stream. Express Entry CRS 460+ competitive. English or French required.",
+        visaFee: 1050,
+        officialUrl: "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada.html"
+      },
+      germany: {
+        cost: { annual: 2000, currency: "USD", label: "€120~450 fees" },
+        difficulty: "moderate",
+        processingDays: "30~60 days",
+        special: "Germany-Tunisia Skilled Worker Agreement (2022) creates facilitated pathway. Chancenkarte (Opportunity Card) allows job-seeking. EU Blue Card needs €45K+ salary. German language B1+ helpful.",
+        visaFee: 120,
+        officialUrl: "https://www.make-it-in-germany.com/en/visa-residence/types/work-qualified-professionals"
+      },
+      australia: {
+        cost: { annual: 4640, currency: "USD", label: "AUD 4,640 TSS fee" },
+        difficulty: "hard",
+        processingDays: "2~4 months",
+        special: "TSS (482) employer sponsor required. Skills assessment by relevant body. Immigration background check thorough. IELTS 6.0+ required. Tunisian credential recognition may need assessment.",
+        visaFee: 3115,
+        officialUrl: "https://immi.homeaffairs.gov.au/visas/working-in-australia"
+      },
+      singapore: {
+        cost: { annual: 1200, currency: "USD", label: "SGD 105 EP fee" },
+        difficulty: "hard",
+        processingDays: "3~8 weeks",
+        special: "Employment Pass requires SGD 5,000+/month. Competitive process for Tunisians — STEM and finance professionals with top qualifications succeed. Employer applies via MyMOM Portal.",
+        visaFee: 105,
+        officialUrl: "https://www.mom.gov.sg/passes-and-permits/employment-pass"
+      },
+      uae: {
+        cost: { annual: 1500, currency: "USD", label: "AED 500~2,000 fees" },
+        difficulty: "easy",
+        processingDays: "2~4 weeks",
+        special: "UAE has large Tunisian expatriate workforce. Employer-sponsored visa. Dubai and Abu Dhabi popular for Tunisian engineers, healthcare workers, and educators. Tax-free income major draw.",
+        visaFee: 500,
+        officialUrl: "https://u.ae/en/information-and-services/visa-and-emirates-id/types-of-visa/employment-visa"
+      },
+      uk: {
+        cost: { annual: 1500, currency: "USD", label: "£239 Skilled Worker fee" },
+        difficulty: "hard",
+        processingDays: "3~8 weeks",
+        special: "Skilled Worker visa needs UK licensed sponsor + CoS + English language. Salary threshold £38,700+. Immigration background check thorough for Tunisian applicants.",
+        visaFee: 239,
+        officialUrl: "https://www.gov.uk/skilled-worker-visa"
+      },
+      japan: {
+        cost: { annual: 2000, currency: "USD", label: "¥3,000 visa fee" },
+        difficulty: "hard",
+        processingDays: "1~3 months",
+        special: "Very rare pathway for Tunisian workers. Engineer/Specialist visa requires university degree in relevant field. Japanese or English business level needed. Long process.",
+        visaFee: 20,
+        officialUrl: "https://www.moj.go.jp/isa/applications/status/engineer.html"
+      },
+      portugal: {
+        cost: { annual: 2000, currency: "USD", label: "€83~440 visa fee" },
+        difficulty: "moderate",
+        processingDays: "30~60 days",
+        special: "D3 Highly Qualified or D7 Passive Income. Portugal has bilateral agreement facilitating some North African worker mobility. Francophone advantage. Lisbon growing tech hub.",
+        visaFee: 83,
+        officialUrl: "https://aima.gov.pt/en"
+      },
+      usa: {
+        cost: { annual: 5000, currency: "USD", label: "H-1B: $1,710+ fees" },
+        difficulty: "hard",
+        processingDays: "6~9 months",
+        special: "H-1B annual cap lottery (85,000 spots). Employer must sponsor and file petition. No E-3 visa for Tunisians. L-1 intracompany transfer possible for MNC employees.",
+        visaFee: 1710,
+        officialUrl: "https://www.dol.gov/agencies/eta/foreign-labor/programs/h-1b"
+      },
+      thailand: {
+        cost: { annual: 2000, currency: "USD", label: "฿2,000 Non-B + permit" },
+        difficulty: "moderate",
+        processingDays: "3~4 weeks",
+        special: "Non-Immigrant B visa + Work Permit. BOI-registered companies help with sponsorship. LTR Visa for qualifying professionals. OIC member countries have informal goodwill.",
+        visaFee: 80,
+        officialUrl: "https://www.dbd.go.th/en"
+      },
+      newzealand: {
+        cost: { annual: 700, currency: "USD", label: "NZD 700 AEWV fee" },
+        difficulty: "hard",
+        processingDays: "4~8 weeks",
+        special: "AEWV requires employer accreditation. Immigration health and character standards checked. IELTS 6.5+ typically required. Tunisian credential assessment may be needed.",
+        visaFee: 470,
+        officialUrl: "https://www.immigration.govt.nz"
+      },
+      france: {
+        cost: { annual: 2000, currency: "USD", label: "€99~265 permit fees" },
+        difficulty: "easy",
+        processingDays: "1~3 months",
+        special: "France-Tunisia bilateral labor agreement (one of oldest in Europe). Tech, healthcare, construction sectors actively recruit Tunisians. French language advantage. Largest Tunisian diaspora in Europe.",
+        visaFee: 99,
+        officialUrl: "https://www.immigration.interieur.gouv.fr/En"
+      },
+      netherlands: {
+        cost: { annual: 1500, currency: "USD", label: "€207 HSM permit" },
+        difficulty: "hard",
+        processingDays: "30~60 days",
+        special: "Highly Skilled Migrant threshold €5,670+/month. IND-recognized sponsor required. Achievable for qualified engineers, IT, and data science professionals.",
+        visaFee: 207,
+        officialUrl: "https://ind.nl/en/work/working_in_the_Netherlands/Pages/Highly-skilled-migrant.aspx"
+      },
+      italy: {
+        cost: { annual: 1500, currency: "USD", label: "€116 visa fee" },
+        difficulty: "moderate",
+        processingDays: "1~3 months",
+        special: "Italy has historic Decreto Flussi quota specifically including Tunisia (one of oldest bilateral agreements). Quota positions for seasonal and permanent workers. Sicily and northern Italy have strong Tunisian communities.",
+        visaFee: 116,
+        officialUrl: "https://www.lavoro.gov.it/en"
+      },
+      spain: {
+        cost: { annual: 1500, currency: "USD", label: "€80~200 visa fee" },
+        difficulty: "moderate",
+        processingDays: "1~3 months",
+        special: "Spain-Tunisia bilateral agreement for seasonal agricultural workers. Digital Nomad Visa for remote income €2,300+/month. Growing Tunisian community in Valencia.",
+        visaFee: 80,
+        officialUrl: "https://www.inclusion.gob.es/web/migraciones"
+      },
+      malaysia: {
+        cost: { annual: 1000, currency: "USD", label: "MYR 1,500 EP fee" },
+        difficulty: "easy",
+        processingDays: "2~4 weeks",
+        special: "Employment Pass feasible for Tunisian STEM professionals. OIC solidarity. English working environment in MNCs. Halal environment familiar. KL popular for North African professionals.",
+        visaFee: 330,
+        officialUrl: "https://www.esd.imi.gov.my"
+      }
+    },
+    immigration: {
+      canada: {
+        cost: { annual: 0, currency: "USD", label: "CAD 1,325~2,140 fees" },
+        difficulty: "moderate",
+        processingDays: "6~18 months",
+        special: "Express Entry: French-speaking Tunisians receive Francophone priority — up to 50 bonus CRS points. Quebec skilled worker fast-track for French speakers. English IELTS or French TEF required.",
+        visaFee: 1325,
+        officialUrl: "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html"
+      },
+      germany: {
+        cost: { annual: 0, currency: "USD", label: "€120~500 permit fees" },
+        difficulty: "moderate",
+        processingDays: "3~5 years",
+        special: "Niederlassungserlaubnis after 3-5yr legal work. Germany-Tunisia bilateral agreement helps. B1 German language required. High demand for Tunisian engineers under bilateral agreement.",
+        visaFee: 120,
+        officialUrl: "https://www.make-it-in-germany.com/en/visa-residence/types/settlement-permit"
+      },
+      australia: {
+        cost: { annual: 0, currency: "USD", label: "AUD 4,195 visa fee" },
+        difficulty: "hard",
+        processingDays: "2~4 years",
+        special: "Skills assessment mandatory. IELTS 7.0+ strongly advised. Points test competitive. Credential recognition from Tunisian institutions may require additional steps.",
+        visaFee: 4115,
+        officialUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-independent-189"
+      },
+      singapore: {
+        cost: { annual: 0, currency: "USD", label: "Varies" },
+        difficulty: "hard",
+        processingDays: "3~6 years",
+        special: "PR highly selective and discretionary. No points system. Extended work history and community integration key. Very rare for Tunisian nationals to obtain Singapore PR.",
+        visaFee: 100,
+        officialUrl: "https://www.ica.gov.sg/PR"
+      },
+      uae: {
+        cost: { annual: 0, currency: "USD", label: "AED 2,800~10,000" },
+        difficulty: "moderate",
+        processingDays: "1~2 years",
+        special: "Golden Visa (10yr) for professionals earning AED 30K+/month, investors, or exceptional talent. Large Tunisian diaspora facilitates. Popular route for established Tunisian professionals in UAE.",
+        visaFee: 2800,
+        officialUrl: "https://u.ae/en/information-and-services/visa-and-emirates-id/types-of-visa/golden-visa"
+      },
+      uk: {
+        cost: { annual: 0, currency: "USD", label: "£2,389+ ILR fee" },
+        difficulty: "hard",
+        processingDays: "5+ years",
+        special: "ILR after 5yr continuous legal stay on Skilled Worker. B1 English, Life in UK test, criminal record check. Consistent employment record critical.",
+        visaFee: 2389,
+        officialUrl: "https://www.gov.uk/indefinite-leave-to-remain"
+      },
+      japan: {
+        cost: { annual: 0, currency: "USD", label: "¥8,000 application fee" },
+        difficulty: "hard",
+        processingDays: "10 years (or 3 via HSP)",
+        special: "Standard PR requires 10yr continuous residence. HSP fast-track: 3yr with 70+ points. Japanese language required for naturalization. Very rare for Tunisian nationals.",
+        visaFee: 80,
+        officialUrl: "https://www.moj.go.jp/isa/applications/status/permanent_resident.html"
+      },
+      portugal: {
+        cost: { annual: 0, currency: "USD", label: "€320+ residence fee" },
+        difficulty: "moderate",
+        processingDays: "5 years → PR",
+        special: "D3/D7/D8 visa → 5yr legal residency → Permanent Residence. Portuguese B2 required. Portugal increasingly popular with Tunisian professionals as an EU gateway.",
+        visaFee: 320,
+        officialUrl: "https://aima.gov.pt/en"
+      },
+      usa: {
+        cost: { annual: 0, currency: "USD", label: "DV Lottery or EB petition" },
+        difficulty: "hard",
+        processingDays: "3~15+ years",
+        special: "Diversity Visa (DV) Lottery: Tunisia is eligible most years. Employment-based EB Green Card via employer sponsorship. Long queues for most EB categories.",
+        visaFee: 325,
+        officialUrl: "https://www.uscis.gov/green-card"
+      },
+      thailand: {
+        cost: { annual: 0, currency: "USD", label: "THB 600,000 Elite / LTR" },
+        difficulty: "hard",
+        processingDays: "No standard PR",
+        special: "No standard PR path. Thailand Elite Visa (THB 600,000) for long-term stays. LTR requires $80K income or $250K savings — challenging for most Tunisian applicants.",
+        visaFee: 10000,
+        officialUrl: "https://www.thailand-elite.com"
+      },
+      newzealand: {
+        cost: { annual: 0, currency: "USD", label: "NZD 3,310 visa fee" },
+        difficulty: "moderate",
+        processingDays: "18~36 months",
+        special: "Points-based Skilled Migrant. Skills assessment for Tunisian qualifications required. IELTS 6.5+ typically needed. After 5yr residency → citizenship eligible.",
+        visaFee: 2610,
+        officialUrl: "https://www.immigration.govt.nz"
+      },
+      france: {
+        cost: { annual: 0, currency: "USD", label: "€269+ residence fees" },
+        difficulty: "easy",
+        processingDays: "3~5 years → Carte de Résident",
+        special: "Franco-Tunisian bilateral treaty (1988) is one of most advantageous in Europe for Tunisians. Largest Tunisian diaspora globally is in France (~640,000). After 3yr legal residency → Carte de Résident possible. French B1 required. Fastest naturalization route for Tunisians.",
+        visaFee: 269,
+        officialUrl: "https://www.service-public.fr/particuliers/vosdroits/F11429"
+      },
+      netherlands: {
+        cost: { annual: 0, currency: "USD", label: "€183+ IND fee" },
+        difficulty: "hard",
+        processingDays: "5 years → PR",
+        special: "5yr continuous legal stay → PR. Dutch language A2 required. Integration contract (inburgering). Difficult process for non-EU applicants.",
+        visaFee: 183,
+        officialUrl: "https://ind.nl/en/residence-permits/permanent-residence"
+      },
+      italy: {
+        cost: { annual: 0, currency: "USD", label: "€10.20+ permit fee" },
+        difficulty: "moderate",
+        processingDays: "5 years → EU PR",
+        special: "EU Long-term Residence after 5yr. Italian A2 language. Largest Tunisian community in EU outside France (Sicily, Turin, Milan). Italy-Tunisia bilateral agreement facilitates path.",
+        visaFee: 10,
+        officialUrl: "https://www.interno.gov.it"
+      },
+      spain: {
+        cost: { annual: 0, currency: "USD", label: "€20+ residence card" },
+        difficulty: "moderate",
+        processingDays: "5 years → EU PR",
+        special: "Long-term EU Residency after 5yr. Spanish A2 language. Arraigo social path after 3yr if documented community ties. Arraigo laboral for workers. Growing Tunisian community.",
+        visaFee: 20,
+        officialUrl: "https://www.inclusion.gob.es/web/migraciones"
+      },
+      malaysia: {
+        cost: { annual: 0, currency: "USD", label: "MYR 500K MM2H deposit" },
+        difficulty: "hard",
+        processingDays: "10+ years",
+        special: "PR highly discretionary and very difficult. MM2H (10yr renewable) practical option: MYR 500K fixed deposit. OIC connection makes Malaysia culturally comfortable despite difficult legal path.",
+        visaFee: 5000,
+        officialUrl: "https://mm2h.gov.my"
+      }
+    },
+    travel: {
+      canada: {
+        cost: { annual: 0, currency: "USD", label: "Visitor Visa required" },
+        difficulty: "hard",
+        processingDays: "2~8 weeks",
+        special: "Tunisian passport requires Temporary Resident Visa. Apply online or via VAC in Tunis. Financial proof, accommodation, and ties to Tunisia required. Advance planning essential.",
+        visaFee: 100,
+        weeklyLiving: 420,
+        flightMinUSD: 900,
+        officialUrl: "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html"
+      },
+      germany: {
+        cost: { annual: 0, currency: "USD", label: "Schengen visa required" },
+        difficulty: "hard",
+        processingDays: "15~30 days",
+        special: "Schengen visa required at German consulate in Tunis. Appointment wait 2-4 weeks. Financial proof, accommodation, travel insurance, and itinerary required. 90/180 day max.",
+        visaFee: 80,
+        weeklyLiving: 350,
+        flightMinUSD: 200,
+        officialUrl: "https://tunesien.diplo.de/tn-ar/service/-/1418918"
+      },
+      australia: {
+        cost: { annual: 0, currency: "USD", label: "Visitor visa required" },
+        difficulty: "hard",
+        processingDays: "2~4 weeks",
+        special: "Australian visitor visa required for Tunisians. Apply online with financial evidence and ties to Tunisia. ETA not available for Tunisian passport.",
+        visaFee: 145,
+        weeklyLiving: 400,
+        flightMinUSD: 1100,
+        officialUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600"
+      },
+      singapore: {
+        cost: { annual: 0, currency: "USD", label: "Visa required" },
+        difficulty: "hard",
+        processingDays: "5~10 days",
+        special: "Visa required for Tunisian passport holders. Apply via Singapore embassy or authorized agent. Financial evidence required. 96hr IPATA transit without visa available.",
+        visaFee: 30,
+        weeklyLiving: 280,
+        flightMinUSD: 600,
+        officialUrl: "https://www.ica.gov.sg/enter-transit-depart/entering-singapore/visa-requirements"
+      },
+      uae: {
+        cost: { annual: 0, currency: "USD", label: "Visa on arrival 30 days" },
+        difficulty: "easy",
+        processingDays: "On arrival",
+        special: "Tunisian passport → 30-day visa on arrival at UAE airports. One of easiest entries for Tunisian travelers. Dubai very popular for Tunisian tourists and business visitors.",
+        visaFee: 0,
+        weeklyLiving: 350,
+        flightMinUSD: 300,
+        officialUrl: "https://u.ae/en/information-and-services/visa-and-emirates-id"
+      },
+      uk: {
+        cost: { annual: 0, currency: "USD", label: "Standard Visitor Visa required" },
+        difficulty: "hard",
+        processingDays: "3~6 weeks",
+        special: "UK Visitor visa required. Financial evidence, accommodation, return ticket, employment proof. Apply minimum 3-4 weeks before travel.",
+        visaFee: 115,
+        weeklyLiving: 500,
+        flightMinUSD: 300,
+        officialUrl: "https://www.gov.uk/standard-visitor-visa"
+      },
+      japan: {
+        cost: { annual: 0, currency: "USD", label: "Tourist visa required" },
+        difficulty: "hard",
+        processingDays: "3~5 days",
+        special: "Japanese tourist visa required for Tunisian passport. Apply at Japanese Embassy Tunis. Financial evidence, itinerary, accommodation proof. No Visa Waiver for Tunisia.",
+        visaFee: 20,
+        weeklyLiving: 250,
+        flightMinUSD: 800,
+        officialUrl: "https://www.tn.emb-japan.go.jp"
+      },
+      portugal: {
+        cost: { annual: 0, currency: "USD", label: "Schengen visa required" },
+        difficulty: "hard",
+        processingDays: "15~30 days",
+        special: "Schengen visa required. Can apply via French, Spanish, or Portuguese consulate. French consulate in Tunis has historically fast processing. 90/180 day rule.",
+        visaFee: 80,
+        weeklyLiving: 220,
+        flightMinUSD: 200,
+        officialUrl: "https://www.schengenvisainfo.com/portugal-visa/"
+      },
+      usa: {
+        cost: { annual: 0, currency: "USD", label: "B-2 Tourist Visa required" },
+        difficulty: "hard",
+        processingDays: "2~6 months",
+        special: "B-2 visitor visa requires US Embassy interview in Tunis. Non-immigrant intent proof essential. Financial ties to Tunisia required. ESTA not available. Apply 6 months ahead.",
+        visaFee: 185,
+        weeklyLiving: 350,
+        flightMinUSD: 800,
+        officialUrl: "https://tn.usembassy.gov"
+      },
+      thailand: {
+        cost: { annual: 0, currency: "USD", label: "Visa-free 30 days" },
+        difficulty: "easy",
+        processingDays: "Visa-free",
+        special: "Tunisian passport → 30-day visa-free entry to Thailand. Popular holiday destination. Phuket, Bangkok, and Koh Samui accessible. Extendable 30 days locally.",
+        visaFee: 0,
+        weeklyLiving: 150,
+        flightMinUSD: 500,
+        officialUrl: "https://www.thaiembassy.com/thailand/thailand-visa-exemption.php"
+      },
+      newzealand: {
+        cost: { annual: 0, currency: "USD", label: "Visitor visa NZD 211" },
+        difficulty: "hard",
+        processingDays: "2~4 weeks",
+        special: "NZeTA not available for Tunisian passport. Standard visitor visa required. Financial evidence and ties to Tunisia needed. Apply via Immigration New Zealand online.",
+        visaFee: 170,
+        weeklyLiving: 300,
+        flightMinUSD: 1200,
+        officialUrl: "https://www.immigration.govt.nz"
+      },
+      france: {
+        cost: { annual: 0, currency: "USD", label: "Schengen visa required" },
+        difficulty: "moderate",
+        processingDays: "15~30 days",
+        special: "Schengen visa via French consulate in Tunis — one of world's busiest. Very large applicant volume causes delays at peak. French language proficiency helps. Bilateral ties facilitate processing.",
+        visaFee: 80,
+        weeklyLiving: 300,
+        flightMinUSD: 150,
+        officialUrl: "https://fr.ambafrance.org/-Tunisie-"
+      },
+      netherlands: {
+        cost: { annual: 0, currency: "USD", label: "Schengen visa required" },
+        difficulty: "hard",
+        processingDays: "15~30 days",
+        special: "Schengen visa required. Can apply at Dutch, French, or German consulate in Tunis. Financial proof, hotel bookings, and travel insurance required.",
+        visaFee: 80,
+        weeklyLiving: 320,
+        flightMinUSD: 200,
+        officialUrl: "https://www.schengenvisainfo.com/netherlands-visa/"
+      },
+      italy: {
+        cost: { annual: 0, currency: "USD", label: "Schengen visa required" },
+        difficulty: "hard",
+        processingDays: "15~30 days",
+        special: "Schengen visa via Italian consulate in Tunis. Italy-Tunisia proximity (shortest Mediterranean crossing). Historical large Tunisian community in Italy facilitates consulate familiarity.",
+        visaFee: 80,
+        weeklyLiving: 250,
+        flightMinUSD: 100,
+        officialUrl: "https://ambtunis.esteri.it/it/"
+      },
+      spain: {
+        cost: { annual: 0, currency: "USD", label: "Schengen visa required" },
+        difficulty: "hard",
+        processingDays: "15~30 days",
+        special: "Schengen visa via Spanish consulate in Tunis. Spain-Tunisia bilateral goodwill due to geographic proximity. Some historically faster processing than northern EU consulates.",
+        visaFee: 80,
+        weeklyLiving: 220,
+        flightMinUSD: 150,
+        officialUrl: "https://www.schengenvisainfo.com/spain-visa/"
+      },
+      malaysia: {
+        cost: { annual: 0, currency: "USD", label: "Visa-free 30 days" },
+        difficulty: "easy",
+        processingDays: "Visa-free",
+        special: "Tunisian passport → 30-day visa-free entry to Malaysia. OIC and Muslim majority solidarity. KL popular for Tunisian travelers. Halal food widely available. Very affordable.",
+        visaFee: 0,
+        weeklyLiving: 80,
+        flightMinUSD: 500,
         officialUrl: "https://www.imi.gov.my/index.php/en/main-services/visa/visa-exemption.html"
       }
     }
