@@ -1,4 +1,32 @@
 User-agent: *
 Allow: /
 
+# LLM crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot-Extended
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
 Sitemap: https://leavethiscountry.cloud/sitemap.xml
