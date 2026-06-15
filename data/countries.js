@@ -1076,9 +1076,9 @@ const DATA = {
       },
       netherlands: {
         cost: { annual: 2000, currency: "USD", label: "€167 PR permit" },
-        difficulty: "easy",
+        difficulty: "hard",
         processingDays: "6 months",
-        special: "PR after 5yr. Dutch civic integration exam required. 30% tax ruling available for first 5yr of employment. Strong expat infrastructure in Amsterdam.",
+        special: "PR after 5yr. Dutch civic integration exam (B1 spoken Dutch) required. No dual citizenship — must renounce Korean passport. Inburgeringsexamen fees €1,000–3,000.",
         visaFee: 167,
         officialUrl: "https://ind.nl/en/residence-permits/permanent-residence"
       },
