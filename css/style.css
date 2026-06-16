@@ -648,3 +648,43 @@ body {
   .legend { gap: 10px; }
   #rank-panel { display: none; }
 }
+
+/* ── Article two-column layout (article + Giscus comments) ── */
+.art-layout {
+  display: flex;
+  gap: 40px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+  align-items: flex-start;
+}
+.art-layout .art-wrap {
+  flex: 1;
+  min-width: 0;
+  max-width: 760px;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.art-comments {
+  width: 340px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 24px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  padding-top: 48px;
+}
+.art-comments-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+@media (max-width: 1100px) {
+  .art-layout { flex-direction: column; gap: 48px; padding: 0 16px; }
+  .art-comments { width: 100%; position: static; max-height: none; padding-top: 0; }
+  .art-layout .art-wrap { max-width: 100%; }
+}
