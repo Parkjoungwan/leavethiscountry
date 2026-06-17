@@ -17,14 +17,16 @@ async function loadExchangeRates() {
     }
   } catch {}
 
-  // Fetch fresh rates
+  // Fetch fresh rates — CDN-hosted JSON, no CORS issues
   try {
-    const res = await fetch("https://api.frankfurter.app/latest?from=USD&to=INR,KRW,JPY,HKD", {
-      signal: AbortSignal.timeout(5000)
-    });
+    const res = await fetch(
+      "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json",
+      { signal: AbortSignal.timeout(5000) }
+    );
     if (!res.ok) throw new Error("fetch failed");
     const data = await res.json();
-    const rates = { INR: data.rates.INR, KRW: data.rates.KRW, JPY: data.rates.JPY, HKD: data.rates.HKD };
+    const r = data.usd;
+    const rates = { INR: r.inr, KRW: r.krw, JPY: r.jpy, HKD: r.hkd };
 
     localStorage.setItem(RATES_CACHE_KEY, JSON.stringify({ rates, ts: Date.now() }));
     applyRates(rates);
