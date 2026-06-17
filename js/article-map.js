@@ -16,6 +16,16 @@ const VALID_PAIRS = new Set([
   "hongkong-uae","hongkong-uk","hongkong-japan","hongkong-portugal",
   "hongkong-usa","hongkong-thailand","hongkong-newzealand","hongkong-france",
   "hongkong-netherlands","hongkong-italy","hongkong-spain","hongkong-malaysia",
+  "usa-canada","usa-australia","usa-germany","usa-singapore",
+  "usa-uae","usa-uk","usa-japan","usa-portugal","usa-thailand",
+  "usa-newzealand","usa-france","usa-netherlands","usa-italy","usa-spain","usa-malaysia",
+  "france-canada","france-australia","france-germany","france-singapore",
+  "france-uae","france-uk","france-japan","france-portugal","france-thailand",
+  "france-newzealand","france-netherlands","france-italy","france-spain","france-malaysia","france-usa",
+  "tunisia-canada","tunisia-australia","tunisia-germany","tunisia-singapore",
+  "tunisia-uae","tunisia-uk","tunisia-japan","tunisia-portugal","tunisia-thailand",
+  "tunisia-newzealand","tunisia-france","tunisia-netherlands","tunisia-italy",
+  "tunisia-spain","tunisia-malaysia","tunisia-usa",
 ]);
 
 function getArticleUrl(fromKey, toKey, currentPurpose) {
