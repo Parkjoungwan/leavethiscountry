@@ -455,7 +455,7 @@ def build_article(from_c, to_c):
     article_ld = (
         f'{{"@context":"https://schema.org","@type":"Article","headline":"{title_plain}",'
         f'"description":"Complete guide for {from_name} nationals moving to {to_name} in 2026.",'
-        f'"url":"{url}","datePublished":"2026-01-15","dateModified":"2026-06-15",'
+        f'"url":"{url}","datePublished":"2026-01-15","dateModified":"2026-10-19",'
         f'"publisher":{{"@type":"Organization","name":"LeaveThisCountry","url":"https://leavethiscountry.cloud"}},'
         f'"breadcrumb":{{"@type":"BreadcrumbList","itemListElement":['
         f'{{"@type":"ListItem","position":1,"name":"Home","item":"https://leavethiscountry.cloud/"}},'
@@ -559,7 +559,7 @@ def build_article(from_c, to_c):
   </nav>
   <div class="breadcrumb"><a href="../index.html" data-i18n="home">Home</a> › {from_name} › {to_name}</div>
   <h1>{from_flag} {from_name} → {to_flag} {to_name}: Complete 2026 Guide</h1>
-  <div class="meta">From: {from_name} &nbsp;·&nbsp; To: {to_name} &nbsp;·&nbsp; Updated: June 2026</div>
+  <div class="meta">From: {from_name} &nbsp;·&nbsp; To: {to_name} &nbsp;·&nbsp; Updated: October 2026</div>
 
   <div class="purpose-nav">
     <a href="#work" class="purpose-tab" data-i18n="art_work">Work</a>
@@ -574,7 +574,7 @@ def build_article(from_c, to_c):
     {source_links}
   </div>
   <div class="author-box">
-    <p><strong style="color:var(--text)" data-i18n="about_guide">About this guide</strong> — Data researched against official government sources. Last reviewed June 2026. LeaveThisCountry provides general information only — not legal or immigration advice. See our <a href="../disclaimer.html" style="color:var(--accent)">disclaimer</a>.</p>
+    <p><strong style="color:var(--text)" data-i18n="about_guide">About this guide</strong> — Data researched against official government sources. Last reviewed October 2026. LeaveThisCountry provides general information only — not legal or immigration advice. See our <a href="../disclaimer.html" style="color:var(--accent)">disclaimer</a>.</p>
   </div>
   <div class="related-box">
     <h3><span data-i18n="more_guides_from">More guides from</span> <span data-i18n="{from_i18n}">{from_name}</span></h3>

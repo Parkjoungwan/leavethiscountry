@@ -1,7 +1,7 @@
-// Live exchange rates via Frankfurter API (ECB data, no API key needed)
+// Live exchange rates via fawazahmed0 currency-api on jsDelivr (no API key needed)
 // Caches in localStorage for 24 hours, falls back to hardcoded on failure
 
-const RATES_CACHE_KEY = "ltc_rates_v1";
+const RATES_CACHE_KEY = "ltc_rates_v2";
 const RATES_CACHE_TTL = 24 * 60 * 60 * 1000; // 24h
 
 async function loadExchangeRates() {
@@ -26,7 +26,7 @@ async function loadExchangeRates() {
     if (!res.ok) throw new Error("fetch failed");
     const data = await res.json();
     const r = data.usd;
-    const rates = { INR: r.inr, KRW: r.krw, JPY: r.jpy, HKD: r.hkd };
+    const rates = { INR: r.inr, KRW: r.krw, JPY: r.jpy, HKD: r.hkd, EUR: r.eur, TND: r.tnd };
 
     localStorage.setItem(RATES_CACHE_KEY, JSON.stringify({ rates, ts: Date.now() }));
     applyRates(rates);
@@ -40,4 +40,6 @@ function applyRates(rates) {
   if (rates.KRW) FROM_CURRENCY.korea.rateFromUSD = rates.KRW;
   if (rates.JPY) FROM_CURRENCY.japan.rateFromUSD = rates.JPY;
   if (rates.HKD) FROM_CURRENCY.hongkong.rateFromUSD = rates.HKD;
+  if (rates.EUR) FROM_CURRENCY.france.rateFromUSD = rates.EUR;
+  if (rates.TND) FROM_CURRENCY.tunisia.rateFromUSD = rates.TND;
 }

@@ -109,4 +109,4 @@ Visa data sourced from official government immigration portals. Difficulty ratin
 - **Moderate** — requires preparation, some conditions, standard approval
 - **Hard** — quotas, lotteries, language requirements, or long backlogs
 
-Last data review: June 2026. This site provides general information only — not legal or immigration advice.
+Last data review: October 2026. This site provides general information only — not legal or immigration advice.
