@@ -27,11 +27,11 @@ LANG_SW = '''\
 
 REPLACEMENTS = [
     # Back to map link
-    ('<a href="../index.html">← Back to map</a>',
-     '<a href="../index.html" data-i18n="back_to_map">← Back to map</a>'),
+    ('<a href="/">← Back to map</a>',
+     '<a href="/" data-i18n="back_to_map">← Back to map</a>'),
     # Breadcrumb Home
-    ('<a href="../index.html">Home</a>',
-     '<a href="../index.html" data-i18n="home">Home</a>'),
+    ('<a href="/">Home</a>',
+     '<a href="/" data-i18n="home">Home</a>'),
     # Purpose tabs
     ('<a href="#work" class="purpose-tab">Work</a>',
      '<a href="#work" class="purpose-tab" data-i18n="art_work">Work</a>'),
@@ -87,8 +87,8 @@ def process(fn, from_c):
 
     # Add lang switcher to art-nav (after back-to-map link)
     content = content.replace(
-        '<a href="../index.html" data-i18n="back_to_map">← Back to map</a>\n  </nav>',
-        '<a href="../index.html" data-i18n="back_to_map">← Back to map</a>\n    ' + LANG_SW + '\n  </nav>'
+        '<a href="/" data-i18n="back_to_map">← Back to map</a>\n  </nav>',
+        '<a href="/" data-i18n="back_to_map">← Back to map</a>\n    ' + LANG_SW + '\n  </nav>'
     )
 
     # Add i18n.js before </body>

@@ -105,7 +105,7 @@ def make_related_html(from_c, to_c, all_pairs):
     if not related:
         return ''
     items = '\n      '.join(
-        f'<a href="{fn}" class="rel-link">{f_flag} → {TO_INFO[tc][0]} {TO_INFO[tc][1]}</a>'
+        f'<a href="{fn.removesuffix(".html")}" class="rel-link">{f_flag} → {TO_INFO[tc][0]} {TO_INFO[tc][1]}</a>'
         for fn, tc in related
     )
     return f'''

@@ -296,7 +296,7 @@ def related_links(from_c, to_c, max_links=8):
     others = [t for t in TO_INFO if t != to_c and t != from_c]
     for tc in others[:max_links]:
         ti = TO_INFO[tc]
-        links.append(f'<a href="{from_c}-to-{tc}-2026.html" class="rel-link">{fi["flag"]} → {ti["flag"]} {ti["name"]}</a>')
+        links.append(f'<a href="{from_c}-to-{tc}-2026" class="rel-link">{fi["flag"]} → {ti["flag"]} {ti["name"]}</a>')
     return '\n      '.join(links)
 
 
@@ -445,7 +445,7 @@ def build_article(from_c, to_c):
     to_flag = ti['flag']
     from_i18n = fi['i18n_key']
     slug = f'{from_c}-to-{to_c}-2026'
-    url = f'https://leavethiscountry.cloud/articles/{slug}.html'
+    url = f'https://leavethiscountry.cloud/articles/{slug}'
 
     title = f'{from_name} to {to_name}: Work, Study, Immigration &amp; Travel Guide 2026'
     title_plain = title.replace('&amp;', '&')
@@ -544,8 +544,8 @@ def build_article(from_c, to_c):
 <body>
 <div class="art-wrap">
   <nav class="art-nav">
-    <a href="../index.html" class="art-logo">Leave<span>This</span>Country</a>
-    <a href="../index.html" data-i18n="back_to_map">← Back to map</a>
+    <a href="/" class="art-logo">Leave<span>This</span>Country</a>
+    <a href="/" data-i18n="back_to_map">← Back to map</a>
     <div class="lang-sw art-lang-sw">
       <button class="lang-trigger">&#127760; <span class="lang-current">EN</span></button>
       <div class="lang-menu">
@@ -557,7 +557,7 @@ def build_article(from_c, to_c):
       </div>
     </div>
   </nav>
-  <div class="breadcrumb"><a href="../index.html" data-i18n="home">Home</a> › {from_name} › {to_name}</div>
+  <div class="breadcrumb"><a href="/" data-i18n="home">Home</a> › {from_name} › {to_name}</div>
   <h1>{from_flag} {from_name} → {to_flag} {to_name}: Complete 2026 Guide</h1>
   <div class="meta">From: {from_name} &nbsp;·&nbsp; To: {to_name} &nbsp;·&nbsp; Updated: October 2026</div>
 
@@ -574,7 +574,7 @@ def build_article(from_c, to_c):
     {source_links}
   </div>
   <div class="author-box">
-    <p><strong style="color:var(--text)" data-i18n="about_guide">About this guide</strong> — Data researched against official government sources. Last reviewed October 2026. LeaveThisCountry provides general information only — not legal or immigration advice. See our <a href="../disclaimer.html" style="color:var(--accent)">disclaimer</a>.</p>
+    <p><strong style="color:var(--text)" data-i18n="about_guide">About this guide</strong> — Data researched against official government sources. Last reviewed October 2026. LeaveThisCountry provides general information only — not legal or immigration advice. See our <a href="../disclaimer" style="color:var(--accent)">disclaimer</a>.</p>
   </div>
   <div class="related-box">
     <h3><span data-i18n="more_guides_from">More guides from</span> <span data-i18n="{from_i18n}">{from_name}</span></h3>
